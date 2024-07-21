@@ -6,6 +6,17 @@ export default function App({ Component }: PageProps) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>audrownashpodcast.com</title>
+        <style>
+          {`
+          @font-face {
+            font-family: 'Bebas Neue';
+            src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+          }
+        `}
+        </style>
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>

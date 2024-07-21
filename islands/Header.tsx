@@ -19,12 +19,12 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
       class={`${baseClasses} ${bgClasses} ${menuOpenClasses} relative z-50`}
     >
       <nav class="max-w-screen-xl mx-auto px-4 flex flex-wrap justify-between items-center">
-        <h1 class="text-2xl font-bold">
+        <h1 class="text-3xl font-bold font-bebas">
           <a href="/" class="hover:underline">Audrow Nash Podcast</a>
         </h1>
 
         <button
-          class="lg:hidden z-50"
+          class="lg:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -39,9 +39,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d={isMenuOpen
-                ? "M6 18L18 6M6 6l12 12"
-                : "M4 6h16M4 12h16M4 18h16"}
+              d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
         </button>
@@ -49,12 +47,38 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
         <div
           class={`${
             isMenuOpen
-              ? "fixed inset-0 bg-gray-800 bg-opacity-95 text-white"
+              ? "fixed inset-0 bg-secondary text-white pt-20"
               : "hidden"
           } lg:relative lg:bg-transparent lg:block ${
             !isTransparent && !isMenuOpen ? "lg:text-gray-800" : "lg:text-white"
           }`}
         >
+          {isMenuOpen && (
+            <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+              <h1 class="text-3xl font-bold font-bebas">
+                <a href="/" class="hover:underline">Audrow Nash Podcast</a>
+              </h1>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
           <ul class="flex flex-col lg:flex-row items-center justify-center h-full space-y-8 lg:space-y-0 lg:space-x-8">
             <li>
               <a
