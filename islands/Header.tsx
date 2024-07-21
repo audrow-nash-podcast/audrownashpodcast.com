@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 
 type HeaderProps = {
-  currentPage: "home" | "about" | "contact" | "listen";
+  currentPage: "home" | "about" | "contact" | "listen" | "posts";
   isTransparent?: boolean;
 };
 
@@ -37,6 +37,26 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
               </li>
               <li>
                 <a
+                  href="/posts"
+                  class={`text-base hover:underline ${
+                    currentPage === "posts" ? "font-bold" : ""
+                  }`}
+                >
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://episodes.fm/1716486786"
+                  class={`text-base hover:underline ${
+                    currentPage === "listen" ? "font-bold" : ""
+                  }`}
+                >
+                  Listen
+                </a>
+              </li>
+              <li>
+                <a
                   href="/about"
                   class={`text-base hover:underline ${
                     currentPage === "about" ? "font-bold" : ""
@@ -52,17 +72,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                     currentPage === "contact" ? "font-bold" : ""
                   }`}
                 >
-                  Get in Touch
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://episodes.fm/1716486786"
-                  class={`text-base hover:underline ${
-                    currentPage === "listen" ? "font-bold" : ""
-                  }`}
-                >
-                  Where to Listen?
+                  Contact
                 </a>
               </li>
             </ul>
@@ -163,6 +173,16 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 }`}
               >
                 Where to Listen?
+              </a>
+            </li>
+            <li>
+              <a
+                href="/posts"
+                class={`text-2xl hover:underline ${
+                  currentPage === "posts" ? "font-bold" : ""
+                }`}
+              >
+                Blog
               </a>
             </li>
           </ul>

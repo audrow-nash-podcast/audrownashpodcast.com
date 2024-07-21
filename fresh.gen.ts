@@ -7,6 +7,8 @@ import * as $_app from "./routes/_app.tsx";
 import * as $about from "./routes/about.tsx";
 import * as $contact from "./routes/contact.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $posts_slug_ from "./routes/posts/[slug].tsx";
+import * as $posts_index from "./routes/posts/index.tsx";
 import * as $FoldingSection from "./islands/FoldingSection.tsx";
 import * as $Header from "./islands/Header.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -18,6 +20,8 @@ const manifest = {
     "./routes/about.tsx": $about,
     "./routes/contact.tsx": $contact,
     "./routes/index.tsx": $index,
+    "./routes/posts/[slug].tsx": $posts_slug_,
+    "./routes/posts/index.tsx": $posts_index,
   },
   islands: {
     "./islands/FoldingSection.tsx": $FoldingSection,

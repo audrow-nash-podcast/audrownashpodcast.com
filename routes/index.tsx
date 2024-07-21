@@ -1,8 +1,18 @@
 import { Head } from "$fresh/runtime.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { Header } from "../islands/Header.tsx";
 import { Footer } from "../components/Footer.tsx";
+import { getPosts, Post } from "../utils/posts.ts";
+import { PostCard } from "../components/PostCard.tsx";
 
-export default function Home() {
+export const handler: Handlers<Post[]> = {
+  async GET(_, ctx) {
+    const posts = await getPosts();
+    return ctx.render(posts);
+  },
+};
+
+export default function Home({ data: posts }: PageProps<Post[]>) {
   return (
     <>
       <Head>
@@ -60,18 +70,12 @@ export default function Home() {
         <div class="bg-slate-100">
           <main class="max-w-4xl mx-auto px-4">
             <section class="px-4 pt-24">
-              <h3 class="text-3xl font-bold mb-6">Latest episodes</h3>
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                <h4 class="text-xl font-bold mb-2">Coming soon</h4>
-                <p>
-                  This is Audrow Nash Podcast, a brand new site by Audrow Nash
-                  that's just getting started. Things will be up and running
-                  here shortly, but you can subscribe in the meantime if you'd
-                  like to stay up to date and receive emails when new content is
-                  published.
-                </p>
-                <p class="pt-4 text-gray-600">June 05, 2024</p>
-              </div>
+              <h3 class="text-3xl font-bold mb-6">Recent posts</h3>
+              <ul class="space-y-8">
+                {posts.map((post) => (
+                  <PostCard key={post.slug} post={post} />
+                ))}
+              </ul>
             </section>
 
             <section class="px-4 pt-24">
