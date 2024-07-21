@@ -15,9 +15,7 @@ export default function PostsIndex({ data: posts }: PageProps<Post[]>) {
     <PageLayout title="Posts" currentPage="posts">
       <h2 class="text-4xl font-bold mb-8">Posts</h2>
       <ul class="space-y-8">
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
+        {posts.map((post) => <PostCard key={post.slug} post={post} />)}
       </ul>
     </PageLayout>
   );

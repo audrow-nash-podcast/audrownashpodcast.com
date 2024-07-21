@@ -72,9 +72,7 @@ export default function Home({ data: posts }: PageProps<Post[]>) {
             <section class="px-4 pt-24">
               <h3 class="text-3xl font-bold mb-6">Recent posts</h3>
               <ul class="space-y-8">
-                {posts.map((post) => (
-                  <PostCard key={post.slug} post={post} />
-                ))}
+                {posts.map((post) => <PostCard key={post.slug} post={post} />)}
               </ul>
             </section>
 
