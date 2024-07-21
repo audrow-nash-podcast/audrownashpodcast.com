@@ -22,12 +22,12 @@ export default function Home() {
             <div class="absolute inset-0 bg-black bg-opacity-20"></div>
             <div class="absolute bottom-0 left-0 right-0">
               <div class="max-w-3xl mx-auto px-4 pb-8">
-                <h2 class="text-4xl font-bold text-center text-white">
+                <h2 class="text-4xl sm:text-5xl md:text-4xl font-bold text-center text-white">
                   Exploring the frontiers of robotics, one conversation at a
                   time
                 </h2>
                 <div class="mb-4" />
-                <p class="text-center text-white">
+                <p class="text-md sm:text-base md:text-lg text-center text-white">
                   Subscribe below to never miss an episode.
                 </p>
                 <div class="mb-4" />
