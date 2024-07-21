@@ -19,37 +19,82 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
       class={`${baseClasses} ${bgClasses} ${menuOpenClasses} relative z-50`}
     >
       <nav class="max-w-screen-xl mx-auto px-4 flex flex-wrap justify-between items-center">
-        <h1 class="text-3xl font-bold font-bebas">
-          <a href="/" class="hover:underline">Audrow Nash Podcast</a>
-        </h1>
-
-        <button
-          class="lg:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <div class="flex items-center justify-between w-full lg:w-auto">
+          <div class="flex items-center space-x-8">
+            <h1 class="text-3xl font-bold font-bebas">
+              <a href="/" class="hover:underline">Audrow Nash Podcast</a>
+            </h1>
+            <ul class="hidden lg:flex items-center space-x-8">
+              <li>
+                <a
+                  href="/"
+                  class={`text-base hover:underline ${
+                    currentPage === "home" ? "font-bold" : ""
+                  }`}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class={`text-base hover:underline ${
+                    currentPage === "about" ? "font-bold" : ""
+                  }`}
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class={`text-base hover:underline ${
+                    currentPage === "contact" ? "font-bold" : ""
+                  }`}
+                >
+                  Get in Touch
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://episodes.fm/1716486786"
+                  class={`text-base hover:underline ${
+                    currentPage === "listen" ? "font-bold" : ""
+                  }`}
+                >
+                  Where to Listen?
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button
+            class="lg:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
 
         <div
           class={`${
             isMenuOpen
               ? "fixed inset-0 bg-secondary text-white pt-20"
               : "hidden"
-          } lg:relative lg:bg-transparent lg:block ${
+          } lg:relative lg:bg-transparent lg:flex lg:items-center lg:w-auto ${
             !isTransparent && !isMenuOpen ? "lg:text-gray-800" : "lg:text-white"
           }`}
         >
@@ -79,11 +124,11 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
               </button>
             </div>
           )}
-          <ul class="flex flex-col lg:flex-row items-center justify-center h-full space-y-8 lg:space-y-0 lg:space-x-8">
+          <ul class="flex flex-col items-center justify-center h-full space-y-8 lg:hidden">
             <li>
               <a
                 href="/"
-                class={`text-2xl lg:text-base hover:underline ${
+                class={`text-2xl hover:underline ${
                   currentPage === "home" ? "font-bold" : ""
                 }`}
               >
@@ -93,7 +138,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
             <li>
               <a
                 href="/about"
-                class={`text-2xl lg:text-base hover:underline ${
+                class={`text-2xl hover:underline ${
                   currentPage === "about" ? "font-bold" : ""
                 }`}
               >
@@ -103,7 +148,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
             <li>
               <a
                 href="/contact"
-                class={`text-2xl lg:text-base hover:underline ${
+                class={`text-2xl hover:underline ${
                   currentPage === "contact" ? "font-bold" : ""
                 }`}
               >
@@ -113,7 +158,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
             <li>
               <a
                 href="https://episodes.fm/1716486786"
-                class={`text-2xl lg:text-base hover:underline ${
+                class={`text-2xl hover:underline ${
                   currentPage === "listen" ? "font-bold" : ""
                 }`}
               >
@@ -121,16 +166,27 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
               </a>
             </li>
           </ul>
-          {isMenuOpen && (
-            <div class="absolute bottom-16 left-0 right-0 text-center">
-              <a
-                href="#subscribe"
-                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300"
-              >
-                Subscribe
-              </a>
-            </div>
-          )}
+          <div
+            class={`${
+              isMenuOpen ? "absolute bottom-16 left-0 right-0" : ""
+            } text-center lg:hidden mt-8`}
+          >
+            <a
+              href="#subscribe"
+              class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 inline-block"
+            >
+              Subscribe
+            </a>
+          </div>
+        </div>
+
+        <div class="hidden lg:block">
+          <a
+            href="#subscribe"
+            class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300"
+          >
+            Subscribe
+          </a>
         </div>
       </nav>
     </header>
