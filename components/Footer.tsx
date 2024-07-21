@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer class="bg-gray-100 py-4 mt-12">
+    <footer class="bg-gray-100 py-24">
       <div class="max-w-screen-xl mx-auto px-4 text-center">
         <p>Happily made in San Antonio.</p>
         <div class="mt-4 flex justify-center space-x-4">

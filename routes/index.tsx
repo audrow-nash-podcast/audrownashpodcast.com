@@ -7,10 +7,6 @@ export default function Home() {
     <>
       <Head>
         <title>Audrow Nash Podcast</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <div class="min-h-screen bg-white text-gray-800 font-sans">
@@ -27,7 +23,7 @@ export default function Home() {
                   time
                 </h2>
                 <div class="mb-4" />
-                <p class="text-md sm:text-base md:text-xl text-center text-white">
+                <p class="text-md sm:text-base md:text-xl text-center text-gray-300">
                   Subscribe below to never miss an episode.
                 </p>
                 <div class="mb-4" />
@@ -36,67 +32,71 @@ export default function Home() {
           </section>
         </div>
 
-        <main>
-          <section class="w-full bg-gray-800 py-8">
-            <div class="max-w-6xl mx-auto px-4">
-              <div class="flex flex-wrap justify-center gap-4">
-                <a
-                  href="#"
-                  class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
-                >
-                  Listen on Apple Podcasts
-                </a>
-                <a
-                  href="#"
-                  class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
-                >
-                  Listen on Google Podcasts
-                </a>
-                <a
-                  href="#"
-                  class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
-                >
-                  Listen on Spotify
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section class="mx-4 mt-12">
-            <h3 class="text-3xl font-bold mb-6">Latest episodes</h3>
-            <div class="bg-gray-100 p-6 rounded-lg">
-              <h4 class="text-xl font-bold mb-2">Coming soon</h4>
-              <p>
-                This is Audrow Nash Podcast, a brand new site by Audrow Nash
-                that's just getting started. Things will be up and running here
-                shortly, but you can subscribe in the meantime if you'd like to
-                stay up to date and receive emails when new content is
-                published.
-              </p>
-              <p class="mt-4 text-gray-600">June 05, 2024</p>
-            </div>
-          </section>
-
-          <section class="mx-4 mt-12">
-            <h3 class="text-2xl font-bold mb-4">
-              Don't miss an insight. Subscribe for episode recaps and
-              opportunities.
-            </h3>
-            <form class="flex">
-              <input
-                type="email"
-                placeholder="jamie@example.com"
-                class="flex-grow px-4 py-2 rounded-l-full border-2 border-r-0 border-gray-300 focus:outline-none focus:border-gray-500"
-              />
-              <button
-                type="submit"
-                class="bg-black text-white px-6 py-2 rounded-r-full hover:bg-gray-800"
+        <section class="w-full bg-gray-800 py-12">
+          <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+              <a
+                href="#"
+                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
               >
-                Subscribe
-              </button>
-            </form>
-          </section>
-        </main>
+                Listen on Apple Podcasts
+              </a>
+              <a
+                href="#"
+                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
+              >
+                Listen on Google Podcasts
+              </a>
+              <a
+                href="#"
+                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
+              >
+                Listen on Spotify
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <div class="bg-slate-100">
+          <main class="max-w-4xl mx-auto px-4">
+            <section class="px-4 pt-24">
+              <h3 class="text-3xl font-bold mb-6">Latest episodes</h3>
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h4 class="text-xl font-bold mb-2">Coming soon</h4>
+                <p>
+                  This is Audrow Nash Podcast, a brand new site by Audrow Nash
+                  that's just getting started. Things will be up and running
+                  here shortly, but you can subscribe in the meantime if you'd
+                  like to stay up to date and receive emails when new content is
+                  published.
+                </p>
+                <p class="pt-4 text-gray-600">June 05, 2024</p>
+              </div>
+            </section>
+
+            <section class="px-4 pt-24">
+              <div class="border-t-4 border-b-4 border-gray-800 py-16">
+                <h3 class="text-3xl sm:text-4xl font-bold pb-6 text-center">
+                  Don't miss an insight. Subscribe for episode recaps and
+                  opportunities.
+                </h3>
+                <form class="flex flex-col sm:flex-row max-w-2xl mx-auto">
+                  <input
+                    type="email"
+                    placeholder="jamie@example.com"
+                    class="flex-grow px-6 py-3 rounded-full sm:rounded-r-none text-lg border-2 border-gray-300 focus:outline-none focus:border-gray-500 mb-4 sm:mb-0"
+                  />
+                  <button
+                    type="submit"
+                    class="bg-black text-white px-8 py-3 rounded-full sm:rounded-l-none text-lg font-semibold hover:bg-gray-800 transition-colors duration-300"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </section>
+          </main>
+        </div>
 
         <Footer />
       </div>
