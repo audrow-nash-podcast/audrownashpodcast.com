@@ -27,6 +27,7 @@ export default function App({ Component }: PageProps) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://audrownashpodcast.com" />
         <link rel="canonical" href="https://audrownashpodcast.com" />
+        <meta name="theme-color" content="#3A7E99" />
         <style>
           {`
           @font-face {

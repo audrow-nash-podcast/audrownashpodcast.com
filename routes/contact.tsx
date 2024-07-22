@@ -1,5 +1,6 @@
 import { PageLayout } from "../components/PageLayout.tsx";
 import FoldingSection from "../islands/FoldingSection.tsx";
+import { CONTACT_EMAILS, SOCIAL_LINKS } from "../constants.ts";
 
 export default function Contact() {
   return (
@@ -14,10 +15,10 @@ export default function Contact() {
           <p>
             Send an email to{" "}
             <a
-              href="mailto:interview@audrownashpodcast.com"
+              href={`mailto:${CONTACT_EMAILS.INTERVIEW}`}
               class="text-blue-600 hover:underline"
             >
-              interview@audrownashpodcast.com
+              {CONTACT_EMAILS.INTERVIEW}
             </a>.
           </p>
         </FoldingSection>
@@ -27,17 +28,17 @@ export default function Contact() {
           <p>
             Send an email to{" "}
             <a
-              href="mailto:jobsearch@audrownashpodcast.com"
+              href={`mailto:${CONTACT_EMAILS.JOB_SEARCH}`}
               class="text-blue-600 hover:underline"
             >
-              jobsearch@audrownashpodcast.com
+              {CONTACT_EMAILS.JOB_SEARCH}
             </a>{" "}
             or<br />
             <a
-              href="mailto:mentor@audrownashpodcast.com"
+              href={`mailto:${CONTACT_EMAILS.MENTOR}`}
               class="text-blue-600 hover:underline"
             >
-              mentor@audrownashpodcast.com
+              {CONTACT_EMAILS.MENTOR}
             </a>.
           </p>
         </FoldingSection>
@@ -47,10 +48,10 @@ export default function Contact() {
           <p>
             Send an email to{" "}
             <a
-              href="mailto:sponsor@audrownashpodcast.com"
+              href={`mailto:${CONTACT_EMAILS.SPONSOR}`}
               class="text-blue-600 hover:underline"
             >
-              sponsor@audrownashpodcast.com
+              {CONTACT_EMAILS.SPONSOR}
             </a>.
           </p>
         </FoldingSection>
@@ -59,16 +60,34 @@ export default function Contact() {
           <p>I'm happy to connect. I'm on</p>
           <ul class="list-disc list-inside">
             <li>
-              <a href="#" class="text-blue-600 hover:underline">𝕏</a>
+              <a
+                href={SOCIAL_LINKS.X.url}
+                class="text-blue-600 hover:underline"
+              >
+                {SOCIAL_LINKS.X.displayName}
+              </a>
             </li>
             <li>
-              <a href="#" class="text-blue-600 hover:underline">LinkedIn</a>
+              <a
+                href={SOCIAL_LINKS.YOUTUBE.url}
+                class="text-blue-600 hover:underline"
+              >
+                {SOCIAL_LINKS.YOUTUBE.displayName}
+              </a>
             </li>
             <li>
-              <a href="#" class="text-blue-600 hover:underline">YouTube</a>
+              <a
+                href={SOCIAL_LINKS.LINKEDIN.url}
+                class="text-blue-600 hover:underline"
+              >
+                {SOCIAL_LINKS.LINKEDIN.displayName}
+              </a>
             </li>
           </ul>
-          <p>I'm most active on 𝕏, but I try to reply on all of them.</p>
+          <p>
+            I'm most active on{" "}
+            {SOCIAL_LINKS.X.displayName}, but I try to reply on all of them.
+          </p>
         </FoldingSection>
 
         <FoldingSection title="Something else?">
@@ -76,10 +95,10 @@ export default function Contact() {
           <p>
             Feel free to send an email to{" "}
             <a
-              href="mailto:hello@audrownashpodcast.com"
+              href={`mailto:${CONTACT_EMAILS.GENERAL}`}
               class="text-blue-600 hover:underline"
             >
-              hello@audrownashpodcast.com
+              {CONTACT_EMAILS.GENERAL}
             </a>.
           </p>
         </FoldingSection>

@@ -4,15 +4,17 @@ import { Header } from "../islands/Header.tsx";
 import { Footer } from "../components/Footer.tsx";
 import { getPosts, Post } from "../utils/posts.ts";
 import { PostCard } from "../components/PostCard.tsx";
+import { SOCIAL_LINKS } from "../constants.ts";
 
 export const handler: Handlers<Post[]> = {
   async GET(_, ctx) {
-    const posts = await getPosts();
-    return ctx.render(posts);
+    const allPosts = await getPosts();
+    const recentPosts = allPosts.slice(0, 3);
+    return ctx.render(recentPosts);
   },
 };
 
-export default function Home({ data: posts }: PageProps<Post[]>) {
+export default function Home({ data: recentPosts }: PageProps<Post[]>) {
   return (
     <>
       <Head>
@@ -45,25 +47,23 @@ export default function Home({ data: posts }: PageProps<Post[]>) {
 
         <section class="w-full bg-gray-800 py-12">
           <div class="max-w-4xl mx-auto px-4">
-            <div class="flex flex-wrap justify-center gap-4">
-              <a
-                href="#"
-                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
-              >
-                Listen on Apple Podcasts
-              </a>
-              <a
-                href="#"
-                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
-              >
-                Listen on Google Podcasts
-              </a>
-              <a
-                href="#"
-                class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 text-sm md:text-base"
-              >
-                Listen on Spotify
-              </a>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+              <SocialLink
+                platform="X"
+                action="Watch"
+              />
+              <SocialLink
+                platform="YOUTUBE"
+                action="Watch"
+              />
+              <SocialLink
+                platform="SPOTIFY"
+                action="Listen"
+              />
+              <SocialLink
+                platform="APPLE_PODCASTS"
+                action="Listen"
+              />
             </div>
           </div>
         </section>
@@ -73,8 +73,18 @@ export default function Home({ data: posts }: PageProps<Post[]>) {
             <section class="px-4 pt-24">
               <h3 class="text-3xl font-bold mb-6">Recent posts</h3>
               <ul class="space-y-8">
-                {posts.map((post) => <PostCard key={post.slug} post={post} />)}
+                {recentPosts.map((post) => (
+                  <PostCard key={post.slug} post={post} />
+                ))}
               </ul>
+              <div class="mt-8 text-center">
+                <a
+                  href="/posts"
+                  class="inline-block bg-secondary hover:bg-primary text-white font-bold py-2 px-4 rounded transition duration-300"
+                >
+                  View all posts
+                </a>
+              </div>
             </section>
 
             <section class="px-4 pt-24">
@@ -104,5 +114,34 @@ export default function Home({ data: posts }: PageProps<Post[]>) {
         <Footer />
       </div>
     </>
+  );
+}
+
+type SocialLinkProps = {
+  platform: keyof typeof SOCIAL_LINKS;
+  action: "Watch" | "Listen";
+};
+
+function SocialLink({ platform, action }: SocialLinkProps) {
+  const { url, displayName, icon } = SOCIAL_LINKS[platform];
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center text-white hover:text-gray-300 transition-colors duration-300"
+    >
+      {icon && (
+        <img
+          src={icon}
+          alt={displayName}
+          class={`w-12 h-12 mr-4 ${platform === "X" ? "rounded-lg" : ""}`}
+        />
+      )}
+      <div class="flex flex-col items-start">
+        <span class="text-sm text-gray-400">{action} on</span>
+        <span class="text-xl font-bold">{displayName}</span>
+      </div>
+    </a>
   );
 }

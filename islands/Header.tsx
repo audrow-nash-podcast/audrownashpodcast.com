@@ -1,7 +1,8 @@
 import { useState } from "preact/hooks";
+import { PageName } from "../types.ts";
 
 type HeaderProps = {
-  currentPage: "home" | "about" | "contact" | "listen" | "posts";
+  currentPage: PageName;
   isTransparent?: boolean;
 };
 
@@ -37,22 +38,22 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
               </li>
               <li>
                 <a
+                  href="/where-to-find"
+                  class={`text-base hover:underline ${
+                    currentPage === "where-to-find" ? "font-bold" : ""
+                  }`}
+                >
+                  Where to Find
+                </a>
+              </li>
+              <li>
+                <a
                   href="/posts"
                   class={`text-base hover:underline ${
                     currentPage === "posts" ? "font-bold" : ""
                   }`}
                 >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://episodes.fm/1716486786"
-                  class={`text-base hover:underline ${
-                    currentPage === "listen" ? "font-bold" : ""
-                  }`}
-                >
-                  Listen
+                  Posts
                 </a>
               </li>
               <li>
@@ -141,8 +142,34 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "home" ? "font-bold" : ""
                 }`}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Go to Home page"
               >
                 Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/where-to-find"
+                class={`text-2xl hover:underline ${
+                  currentPage === "where-to-find" ? "font-bold" : ""
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Go to Where to Find page"
+              >
+                Where to Find
+              </a>
+            </li>
+            <li>
+              <a
+                href="/posts"
+                class={`text-2xl hover:underline ${
+                  currentPage === "posts" ? "font-bold" : ""
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Go to Posts page"
+              >
+                Posts
               </a>
             </li>
             <li>
@@ -151,6 +178,8 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "about" ? "font-bold" : ""
                 }`}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Go to About page"
               >
                 About
               </a>
@@ -161,28 +190,10 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "contact" ? "font-bold" : ""
                 }`}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Go to Contact page"
               >
-                Get in Touch
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://episodes.fm/1716486786"
-                class={`text-2xl hover:underline ${
-                  currentPage === "listen" ? "font-bold" : ""
-                }`}
-              >
-                Where to Listen?
-              </a>
-            </li>
-            <li>
-              <a
-                href="/posts"
-                class={`text-2xl hover:underline ${
-                  currentPage === "posts" ? "font-bold" : ""
-                }`}
-              >
-                Blog
+                Contact
               </a>
             </li>
           </ul>

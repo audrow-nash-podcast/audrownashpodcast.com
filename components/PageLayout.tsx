@@ -1,10 +1,11 @@
 import { Head } from "$fresh/runtime.ts";
 import { Header } from "../islands/Header.tsx";
 import { Footer } from "../components/Footer.tsx";
+import { PageName } from "../types.ts";
 
 type PageLayoutProps = {
   title: string;
-  currentPage: "home" | "about" | "contact" | "listen" | "posts";
+  currentPage: PageName;
   children: preact.ComponentChildren;
 };
 

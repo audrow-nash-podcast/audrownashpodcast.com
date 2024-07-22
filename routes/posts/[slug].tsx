@@ -15,6 +15,14 @@ export const handler: Handlers<Post | null> = {
 export default function PostPage({ data: post }: PageProps<Post>) {
   return (
     <PageLayout title={post.title} currentPage="posts">
+      <div class="mb-8">
+        <a
+          href="/posts"
+          class="text-secondary hover:text-primary transition duration-300"
+        >
+          ← Back to Posts
+        </a>
+      </div>
       <article class="prose prose-lg lg:prose-xl mx-auto">
         <h1>{post.title}</h1>
         <p class="text-gray-600">{post.publishedAt.toDateString()}</p>
