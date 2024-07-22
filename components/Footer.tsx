@@ -24,7 +24,10 @@ export function Footer() {
             <h3 class="text-lg font-semibold mb-4">Listen</h3>
             <ul class="space-y-2">
               <li>
-                <a href="/where-to-find" class="text-gray-600 hover:text-gray-800">
+                <a
+                  href="/where-to-find"
+                  class="text-gray-600 hover:text-gray-800"
+                >
                   Where to Find
                 </a>
               </li>
@@ -39,17 +42,26 @@ export function Footer() {
             <h3 class="text-lg font-semibold mb-4">Connect</h3>
             <ul class="space-y-2">
               <li>
-                <a href={SOCIAL_LINKS.X.url} class="text-gray-600 hover:text-gray-800">
+                <a
+                  href={SOCIAL_LINKS.X.url}
+                  class="text-gray-600 hover:text-gray-800"
+                >
                   {SOCIAL_LINKS.X.displayName}
                 </a>
               </li>
               <li>
-                <a href={SOCIAL_LINKS.LINKEDIN.url} class="text-gray-600 hover:text-gray-800">
+                <a
+                  href={SOCIAL_LINKS.LINKEDIN.url}
+                  class="text-gray-600 hover:text-gray-800"
+                >
                   {SOCIAL_LINKS.LINKEDIN.displayName}
                 </a>
               </li>
               <li>
-                <a href={SOCIAL_LINKS.YOUTUBE.url} class="text-gray-600 hover:text-gray-800">
+                <a
+                  href={SOCIAL_LINKS.YOUTUBE.url}
+                  class="text-gray-600 hover:text-gray-800"
+                >
                   {SOCIAL_LINKS.YOUTUBE.displayName}
                 </a>
               </li>
@@ -59,7 +71,8 @@ export function Footer() {
         <div class="mt-12 text-center">
           <p class="text-gray-600">Happily made in San Antonio.</p>
           <p class="mt-2 text-sm text-gray-500">
-            © {new Date().getFullYear()} Audrow Nash Podcast. All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            Audrow Nash Podcast. All rights reserved.
           </p>
         </div>
       </div>

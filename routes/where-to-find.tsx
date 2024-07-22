@@ -9,7 +9,8 @@ export default function WhereToFind() {
           Where to Find the Podcast
         </h2>
         <p class="text-center text-gray-600 mb-8">
-          Listen to the Audrow Nash Podcast on your favorite platforms and stay connected through social media.
+          Listen to the Audrow Nash Podcast on your favorite platforms and stay
+          connected through social media.
         </p>
 
         <div class="space-y-8">
