@@ -4,7 +4,7 @@ export default function Error404() {
   return (
     <PageLayout title="404 - Page not found" currentPage="404">
       <div class="flex items-center justify-center min-h-[calc(100vh-200px)] px-4">
-        <div class="text-center">
+        <div class="text-center max-w-2xl">
           <h1 class="text-6xl font-bold mb-4">404</h1>
           <h2 class="text-3xl font-semibold mb-6">Oops! Page not found</h2>
           <p class="text-xl mb-8">
