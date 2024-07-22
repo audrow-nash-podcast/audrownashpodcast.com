@@ -38,10 +38,13 @@ This command will watch the project directory and restart as necessary.
 
 ## Project Structure
 
-- `routes/`: Contains the main page components (index, about, contact)
+- `routes/`: Contains the main page components (index, about, contact, posts,
+  etc.)
 - `islands/`: Interactive components that use client-side JavaScript
 - `components/`: Reusable UI components
-- `static/`: Static assets like images and global CSS
+- `static/`: Static assets like images, icons, and global CSS
+- `utils/`: Utility functions for handling posts and other operations
+- `posts/`: Markdown files for blog posts
 - `fresh.gen.ts`: Auto-generated file mapping routes and islands
 
 ## Deployment
@@ -57,6 +60,10 @@ To preview the production build:
 ```
 deno task preview
 ```
+
+The project is set up for continuous deployment using GitHub Actions. When
+changes are pushed to the main branch, the site is automatically deployed to
+Deno Deploy.
 
 ## Contributing
 
