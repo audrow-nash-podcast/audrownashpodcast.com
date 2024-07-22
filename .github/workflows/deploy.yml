@@ -29,6 +29,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "audrownash-audrownashp-55"
+          project: "audrow-nash-podcast"
           entrypoint: "main.ts"
           root: "."
