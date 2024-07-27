@@ -13,6 +13,10 @@ cover: /cover.png
 
 https://www.youtube.com/watch?v=nHDoValf90A&t=2s
 
+https://twitter.com/audrow/status/1811407342321209793
+
+https://x.com/audrow/status/1811407342321209793
+
 ```ts
 const v = 123;
 console.log(v);
