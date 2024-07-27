@@ -5,12 +5,23 @@ snippet: This is an excerpt of my first blog post.
 cover: /cover.png
 ---
 
-Hello, world!
+# Testing
 
-# This is h1
+## How is h2?
 
-## This is h2
+> Quote?
 
-_underline_
+https://www.youtube.com/watch?v=nHDoValf90A&t=2s
 
-**bold**
+```ts
+const v = 123;
+console.log(v);
+```
+
+1.  List 1
+2.  List 2
+
+- bullet 1
+- bullet 2
+
+[my link](https://www.youtube.com/@audrow)
