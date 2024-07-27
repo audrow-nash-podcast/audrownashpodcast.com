@@ -9,9 +9,12 @@ import * as $contact from "./routes/contact.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $posts_slug_ from "./routes/posts/[slug].tsx";
 import * as $posts_index from "./routes/posts/index.tsx";
+import * as $subscription_confirmation from "./routes/subscription-confirmation.tsx";
 import * as $where_to_find from "./routes/where-to-find.tsx";
 import * as $FoldingSection from "./islands/FoldingSection.tsx";
 import * as $Header from "./islands/Header.tsx";
+import * as $SubscribeCta from "./islands/SubscribeCta.tsx";
+import * as $SubscribePopup from "./islands/SubscribePopup.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -23,11 +26,14 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/posts/[slug].tsx": $posts_slug_,
     "./routes/posts/index.tsx": $posts_index,
+    "./routes/subscription-confirmation.tsx": $subscription_confirmation,
     "./routes/where-to-find.tsx": $where_to_find,
   },
   islands: {
     "./islands/FoldingSection.tsx": $FoldingSection,
     "./islands/Header.tsx": $Header,
+    "./islands/SubscribeCta.tsx": $SubscribeCta,
+    "./islands/SubscribePopup.tsx": $SubscribePopup,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

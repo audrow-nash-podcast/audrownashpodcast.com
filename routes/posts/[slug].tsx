@@ -14,7 +14,11 @@ export const handler: Handlers<Post | null> = {
 
 export default function PostPage({ data: post }: PageProps<Post>) {
   return (
-    <PageLayout title={post.title} currentPage="posts">
+    <PageLayout
+      title={post.title}
+      currentPage="posts"
+      includeSubscribeCta={true}
+    >
       <div class="mb-8">
         <a
           href="/posts"

@@ -1,5 +1,6 @@
-import { useState } from "preact/hooks";
+import { useSignal } from "@preact/signals";
 import { PageName } from "../types.ts";
+import { SubscribePopup } from "./SubscribePopup.tsx";
 
 type HeaderProps = {
   currentPage: PageName;
@@ -7,19 +8,20 @@ type HeaderProps = {
 };
 
 export function Header({ currentPage, isTransparent = false }: HeaderProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMenuOpen = useSignal(false);
+  const isSubscribePopupOpen = useSignal(false);
 
   const baseClasses = "py-4 w-full";
   const bgClasses = isTransparent
     ? "bg-transparent text-white"
     : "bg-gray-100 text-gray-800";
-  const menuOpenClasses = isMenuOpen ? "text-white" : "";
+  const menuOpenClasses = isMenuOpen.value ? "text-white" : "";
 
   return (
     <header
       class={`${baseClasses} ${bgClasses} ${menuOpenClasses} relative z-50`}
     >
-      <nav class="max-w-screen-xl mx-auto px-4 flex flex-wrap justify-between items-center">
+      <nav class="mx-auto px-8 flex flex-wrap justify-between items-center">
         <div class="flex items-center justify-between w-full lg:w-auto">
           <div class="flex items-center space-x-8">
             <h1 class="text-3xl font-bold font-bebas">
@@ -80,7 +82,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
           </div>
           <button
             class="lg:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => isMenuOpen.value = !isMenuOpen.value}
             aria-label="Toggle menu"
           >
             <svg
@@ -102,20 +104,22 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
 
         <div
           class={`${
-            isMenuOpen
-              ? "fixed inset-0 bg-secondary text-white pt-20"
+            isMenuOpen.value
+              ? "fixed inset-0 bg-slate-700 text-white pt-20"
               : "hidden"
           } lg:relative lg:bg-transparent lg:flex lg:items-center lg:w-auto ${
-            !isTransparent && !isMenuOpen ? "lg:text-gray-800" : "lg:text-white"
+            !isTransparent && !isMenuOpen.value
+              ? "lg:text-gray-800"
+              : "lg:text-white"
           }`}
         >
-          {isMenuOpen && (
-            <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+          {isMenuOpen.value && (
+            <div class="absolute top-4 left-0 right-0 flex justify-between items-center px-8">
               <h1 class="text-3xl font-bold font-bebas">
                 <a href="/" class="hover:underline">Audrow Nash Podcast</a>
               </h1>
               <button
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => isMenuOpen.value = false}
                 aria-label="Close menu"
               >
                 <svg
@@ -142,7 +146,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "home" ? "font-bold" : ""
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => isMenuOpen.value = false}
                 aria-label="Go to Home page"
               >
                 Home
@@ -154,7 +158,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "where-to-find" ? "font-bold" : ""
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => isMenuOpen.value = false}
                 aria-label="Go to Where to Find page"
               >
                 Where to Find
@@ -166,7 +170,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "posts" ? "font-bold" : ""
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => isMenuOpen.value = false}
                 aria-label="Go to Posts page"
               >
                 Posts
@@ -178,7 +182,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "about" ? "font-bold" : ""
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => isMenuOpen.value = false}
                 aria-label="Go to About page"
               >
                 About
@@ -190,7 +194,7 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
                 class={`text-2xl hover:underline ${
                   currentPage === "contact" ? "font-bold" : ""
                 }`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => isMenuOpen.value = false}
                 aria-label="Go to Contact page"
               >
                 Contact
@@ -199,25 +203,35 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
           </ul>
           <div
             class={`${
-              isMenuOpen ? "absolute bottom-16 left-0 right-0" : ""
+              isMenuOpen.value ? "absolute bottom-16 left-0 right-0" : ""
             } text-center lg:hidden mt-8`}
           >
-            <a
-              href="#subscribe"
-              class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300 inline-block"
+            <button
+              onClick={() => isSubscribePopupOpen.value = true}
+              class="bg-secondary hover:bg-primary text-white font-bold text-xl py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
             >
               Subscribe
-            </a>
+            </button>
+            <SubscribePopup
+              isOpen={isSubscribePopupOpen.value}
+              onClose={() => isSubscribePopupOpen.value = false}
+            />
           </div>
         </div>
 
         <div class="hidden lg:block">
-          <a
-            href="#subscribe"
-            class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition-colors duration-300"
+          <button
+            onClick={() => isSubscribePopupOpen.value = true}
+            class="bg-secondary text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-primary relative overflow-hidden group"
           >
-            Subscribe
-          </a>
+            <span class="relative z-10 px-6">Subscribe</span>
+            <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-in-out">
+            </span>
+          </button>
+          <SubscribePopup
+            isOpen={isSubscribePopupOpen.value}
+            onClose={() => isSubscribePopupOpen.value = false}
+          />
         </div>
       </nav>
     </header>

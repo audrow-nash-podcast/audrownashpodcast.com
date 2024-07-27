@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer.tsx";
 import { getPosts, Post } from "../utils/posts.ts";
 import { PostCard } from "../components/PostCard.tsx";
 import { SOCIAL_LINKS } from "../constants.ts";
+import { SubscribeCta } from "../islands/SubscribeCta.tsx";
 
 export const handler: Handlers<Post[]> = {
   async GET(_, ctx) {
@@ -46,24 +47,26 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
         </div>
 
         <section class="w-full bg-gray-800 py-12">
-          <div class="max-w-4xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
-              <SocialLink
-                platform="X"
-                action="Watch"
-              />
-              <SocialLink
-                platform="YOUTUBE"
-                action="Watch"
-              />
-              <SocialLink
-                platform="SPOTIFY"
-                action="Listen"
-              />
-              <SocialLink
-                platform="APPLE_PODCASTS"
-                action="Listen"
-              />
+          <div class="max-w-4xl mx-auto px-8">
+            <div class="flex flex-col items-center md:items-start md:flex-row md:justify-between gap-8 md:gap-12">
+              <div class="flex flex-col md:items-center items-start md:flex-row md:justify-between gap-8 md:gap-12">
+                <SocialLink
+                  platform="X"
+                  action="Watch"
+                />
+                <SocialLink
+                  platform="YOUTUBE"
+                  action="Watch"
+                />
+                <SocialLink
+                  platform="SPOTIFY"
+                  action="Listen"
+                />
+                <SocialLink
+                  platform="APPLE_PODCASTS"
+                  action="Listen"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -88,25 +91,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
             </section>
 
             <section class="px-4 pt-24">
-              <div class="border-t-4 border-b-4 border-gray-800 py-16">
-                <h3 class="text-3xl sm:text-4xl font-bold pb-6 text-center">
-                  Don't miss an insight. Subscribe for episode recaps and
-                  opportunities.
-                </h3>
-                <form class="flex flex-col sm:flex-row max-w-2xl mx-auto">
-                  <input
-                    type="email"
-                    placeholder="jamie@example.com"
-                    class="flex-grow px-6 py-3 rounded-full sm:rounded-r-none text-lg border-2 border-gray-300 focus:outline-none focus:border-gray-500 mb-4 sm:mb-0"
-                  />
-                  <button
-                    type="submit"
-                    class="bg-black text-white px-8 py-3 rounded-full sm:rounded-l-none text-lg font-semibold hover:bg-gray-800 transition-colors duration-300"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
+              <SubscribeCta />
             </section>
           </main>
         </div>
