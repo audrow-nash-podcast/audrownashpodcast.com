@@ -18,8 +18,8 @@ const v = 123;
 console.log(v);
 ```
 
-1.  List 1
-2.  List 2
+1. List 1
+2. List 2
 
 - bullet 1
 - bullet 2
