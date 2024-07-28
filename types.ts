@@ -8,6 +8,12 @@ export type SocialLinks = {
   [key: string]: SocialLinkEntry;
 };
 
+export interface MenuItem {
+  href: string;
+  label: string;
+  page: PageName;
+}
+
 export type PageName =
   | "home"
   | "about"

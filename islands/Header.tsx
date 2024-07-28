@@ -1,13 +1,17 @@
+import { memo } from "preact/compat";
 import { useSignal } from "@preact/signals";
 import { PageName } from "../types.ts";
 import { SubscribePopup } from "./SubscribePopup.tsx";
+import { MENU_ITEMS } from "../constants.ts";
 
 type HeaderProps = {
   currentPage: PageName;
   isTransparent?: boolean;
 };
 
-export function Header({ currentPage, isTransparent = false }: HeaderProps) {
+export const Header = memo(HeaderComponent);
+
+function HeaderComponent({ currentPage, isTransparent = false }: HeaderProps) {
   const isMenuOpen = useSignal(false);
   const isSubscribePopupOpen = useSignal(false);
 
@@ -28,56 +32,18 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
               <a href="/" class="hover:underline">Audrow Nash Podcast</a>
             </h1>
             <ul class="hidden lg:flex items-center space-x-8">
-              <li>
-                <a
-                  href="/"
-                  class={`text-base hover:underline ${
-                    currentPage === "home" ? "font-bold" : ""
-                  }`}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/where-to-find"
-                  class={`text-base hover:underline ${
-                    currentPage === "where-to-find" ? "font-bold" : ""
-                  }`}
-                >
-                  Where to Find
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/posts"
-                  class={`text-base hover:underline ${
-                    currentPage === "posts" ? "font-bold" : ""
-                  }`}
-                >
-                  Posts
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  class={`text-base hover:underline ${
-                    currentPage === "about" ? "font-bold" : ""
-                  }`}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  class={`text-base hover:underline ${
-                    currentPage === "contact" ? "font-bold" : ""
-                  }`}
-                >
-                  Contact
-                </a>
-              </li>
+              {MENU_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    class={`text-base hover:underline ${
+                      currentPage === item.page ? "font-bold" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           <button
@@ -140,66 +106,20 @@ export function Header({ currentPage, isTransparent = false }: HeaderProps) {
             </div>
           )}
           <ul class="flex flex-col items-center justify-center h-full space-y-8 lg:hidden">
-            <li>
-              <a
-                href="/"
-                class={`text-2xl hover:underline ${
-                  currentPage === "home" ? "font-bold" : ""
-                }`}
-                onClick={() => isMenuOpen.value = false}
-                aria-label="Go to Home page"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/where-to-find"
-                class={`text-2xl hover:underline ${
-                  currentPage === "where-to-find" ? "font-bold" : ""
-                }`}
-                onClick={() => isMenuOpen.value = false}
-                aria-label="Go to Where to Find page"
-              >
-                Where to Find
-              </a>
-            </li>
-            <li>
-              <a
-                href="/posts"
-                class={`text-2xl hover:underline ${
-                  currentPage === "posts" ? "font-bold" : ""
-                }`}
-                onClick={() => isMenuOpen.value = false}
-                aria-label="Go to Posts page"
-              >
-                Posts
-              </a>
-            </li>
-            <li>
-              <a
-                href="/about"
-                class={`text-2xl hover:underline ${
-                  currentPage === "about" ? "font-bold" : ""
-                }`}
-                onClick={() => isMenuOpen.value = false}
-                aria-label="Go to About page"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="/contact"
-                class={`text-2xl hover:underline ${
-                  currentPage === "contact" ? "font-bold" : ""
-                }`}
-                onClick={() => isMenuOpen.value = false}
-                aria-label="Go to Contact page"
-              >
-                Contact
-              </a>
-            </li>
+            {MENU_ITEMS.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  class={`text-2xl hover:underline ${
+                    currentPage === item.page ? "font-bold" : ""
+                  }`}
+                  onClick={() => isMenuOpen.value = false}
+                  aria-label={`Go to ${item.label} page`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
           <div
             class={`${
