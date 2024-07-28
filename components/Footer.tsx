@@ -18,6 +18,14 @@ export function Footer() {
                   Contact
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://github.com/audrow-nash-podcast/audrownashpodcast.com"
+                  class="text-gray-600 hover:text-gray-800"
+                >
+                  Site Github
+                </a>
+              </li>
             </ul>
           </div>
           <div>
@@ -32,7 +40,10 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/posts" class="text-gray-600 hover:text-gray-800">
+                <a
+                  href="https://podcasters.spotify.com/pod/show/audrow1"
+                  class="text-gray-600 hover:text-gray-800"
+                >
                   All Episodes
                 </a>
               </li>
