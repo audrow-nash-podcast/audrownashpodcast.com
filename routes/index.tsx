@@ -36,17 +36,17 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
                   robotics,<br class="hidden md:inline" />{" "}
                   one conversation at a time
                 </h2>
-                <div class="mb-4" />
+                <div class="mb-6" />
                 <p class="text-md sm:text-base md:text-xl text-center text-gray-300">
                   Subscribe below to never miss an episode.
                 </p>
-                <div class="mb-4" />
+                <div class="mb-8" />
               </div>
             </div>
           </section>
         </div>
 
-        <section class="w-full bg-gray-800 py-12">
+        <section class="w-full bg-gray-800 py-8">
           <div class="max-w-4xl mx-auto px-8">
             <div class="flex flex-col items-center md:items-start md:flex-row md:justify-between gap-8 md:gap-12">
               <div class="flex flex-col md:items-center items-start md:flex-row md:justify-between gap-8 md:gap-12">
@@ -73,7 +73,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
 
         <div class="bg-slate-100">
           <main class="max-w-4xl mx-auto px-4">
-            <section class="px-4 pt-24">
+            <section class="px-4 pt-16">
               <h3 class="text-3xl font-bold mb-6">Recent posts</h3>
               <ul class="space-y-8">
                 {recentPosts.map((post) => (
@@ -90,7 +90,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
               </div>
             </section>
 
-            <section class="px-4 pt-24">
+            <section class="px-4 pt-16">
               <SubscribeCta />
             </section>
           </main>
