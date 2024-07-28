@@ -15,11 +15,11 @@ export function PostCard({ post }: PostCardProps) {
           <img
             src={post.cover}
             alt={`Cover image for ${post.title}`}
-            class="w-full md:w-48 h-48 object-cover"
+            class="w-full md:max-w-60 h-full object-cover"
           />
           <div class="p-6 md:p-8">
             <h3 class="text-2xl font-bold mb-3">{post.title}</h3>
-            <p class="text-gray-600 mb-4">{post.snippet}</p>
+            <p class="text-gray-600 mb-4 line-clamp-3">{post.snippet}</p>
             <p class="text-sm text-gray-500">
               {post.publishedAt.toDateString()}
             </p>
