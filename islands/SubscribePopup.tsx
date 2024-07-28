@@ -137,7 +137,8 @@ export function SubscribePopup(
               </button>
               {!isFormValid.value && (
                 <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Please provide a valid first name (at least 2 characters) and email address.
+                  Please provide a valid first name (at least 2 characters) and
+                  email address.
                 </div>
               )}
             </div>
