@@ -46,6 +46,7 @@ export default function About() {
           src="/audrow-and-eve.jpeg"
           alt="Audrow Nash with Eve, the humanoid robot"
           class="w-full max-w-2xl mx-auto mb-4"
+          loading="lazy"
         />
         <p class="text-center text-sm text-gray-600">
           Me with Eve, the humanoid robot I worked on during my internship at

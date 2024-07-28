@@ -121,6 +121,7 @@ function SocialLink({ platform, action }: SocialLinkProps) {
           src={icon}
           alt={displayName}
           class={`w-12 h-12 mr-4 ${platform === "X" ? "rounded-lg" : ""}`}
+          loading="lazy"
         />
       )}
       <div class="flex flex-col items-start">

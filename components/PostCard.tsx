@@ -16,6 +16,7 @@ export function PostCard({ post }: PostCardProps) {
             src={post.cover}
             alt={`Cover image for ${post.title}`}
             class="w-full md:max-w-60 h-full object-cover"
+            loading="lazy"
           />
           <div class="p-6 md:p-8">
             <h3 class="text-2xl font-bold mb-3">{post.title}</h3>

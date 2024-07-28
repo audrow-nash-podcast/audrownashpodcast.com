@@ -109,6 +109,7 @@ export default function Contact() {
           src="/cato-at-computer.jpeg"
           alt="My dog Cato, hard at work"
           class="w-full max-w-2xl mx-auto mb-4"
+          loading="lazy"
         />
         <p class="text-center text-sm text-gray-600">
           My dog Cato, hard at work.
