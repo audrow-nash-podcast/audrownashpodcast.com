@@ -16,6 +16,8 @@ and subscribe to the podcast.
 - [Preact](https://preactjs.com/) - A fast 3kB alternative to React with the
   same modern API
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [Marked](https://marked.js.org/) - A markdown parser and compiler
+- [Buttondown](https://buttondown.email/) - Email newsletter service
 
 ## Getting Started
 
@@ -64,6 +66,14 @@ deno task preview
 The project is set up for continuous deployment using GitHub Actions. When
 changes are pushed to the main branch, the site is automatically deployed to
 Deno Deploy.
+
+## Features
+
+- Responsive design using Tailwind CSS
+- Dynamic routing for blog posts
+- Newsletter subscription using Buttondown
+- Social media integration
+- SEO optimization
 
 ## Contributing
 

@@ -49,3 +49,5 @@ export const MENU_ITEMS: MenuItem[] = [
   { href: "/about", label: "About", page: "about" },
   { href: "/contact", label: "Contact", page: "contact" },
 ];
+
+export const BUTTONDOWN_NEWSLETTER_NAME = "audrow";

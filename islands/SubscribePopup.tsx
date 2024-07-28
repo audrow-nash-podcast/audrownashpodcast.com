@@ -1,4 +1,5 @@
 import { computed, signal } from "@preact/signals";
+import { BUTTONDOWN_NEWSLETTER_NAME } from "../constants.ts";
 
 const firstName = signal("");
 const email = signal("");
@@ -19,7 +20,10 @@ export function SubscribePopup(
   const handleSubmit = (e: Event) => {
     e.preventDefault();
     if (isFormValid.value) {
-      globalThis.open("https://buttondown.email/audrow", "popupwindow");
+      globalThis.open(
+        `https://buttondown.email/${BUTTONDOWN_NEWSLETTER_NAME}`,
+        "popupwindow",
+      );
       (e.target as HTMLFormElement).submit();
       onClose();
     }
@@ -55,7 +59,7 @@ export function SubscribePopup(
           Audrow Nash Podcast
         </h3>
         <form
-          action="https://buttondown.email/api/emails/embed-subscribe/audrow"
+          action={`https://buttondown.email/${BUTTONDOWN_NEWSLETTER_NAME}/api/emails/embed-subscribe/${BUTTONDOWN_NEWSLETTER_NAME}`}
           method="post"
           target="popupwindow"
           onSubmit={handleSubmit}
