@@ -16,12 +16,12 @@ export function SubscribeCta() {
       </h3>
       <div class="md:pb-4" />
       <div class="flex justify-center">
-        <div class="flex flex-col sm:flex-row mb-4 max-w-lg w-full">
+        <div class="flex flex-col sm:flex-row mb-4 max-w-lg w-full gap-4 sm:gap-0">
           <input
             type="email"
             name="email"
             id="bd-email"
-            placeholder="Your email"
+            placeholder="isaac.asimov@foundation.gal"
             class="flex-grow px-6 py-3 rounded-full sm:rounded-r-none text-lg border-2 border-gray-300 focus:outline-none focus:border-gray-500 cursor-pointer"
             aria-label="Enter your email"
             onClick={handleClick}

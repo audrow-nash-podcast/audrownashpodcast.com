@@ -1,15 +1,24 @@
-import { signal } from "@preact/signals";
+import { computed, signal } from "@preact/signals";
 
 const firstName = signal("");
-const lastName = signal("");
 const email = signal("");
+const lastName = signal("");
+
+const isValidEmail = (email: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 export function SubscribePopup(
   { isOpen, onClose }: { isOpen: boolean; onClose: () => void },
 ) {
+  const isFormValid = computed(() =>
+    firstName.value.trim().length >= 2 && isValidEmail(email.value.trim())
+  );
+
   const handleSubmit = (e: Event) => {
     e.preventDefault();
-    if (firstName.value && lastName.value && email.value) {
+    if (isFormValid.value) {
       globalThis.open("https://buttondown.email/audrow", "popupwindow");
       (e.target as HTMLFormElement).submit();
       onClose();
@@ -57,13 +66,13 @@ export function SubscribePopup(
               htmlFor="bd-first-name"
               class="block text-sm font-medium text-gray-700 text-left"
             >
-              First Name
+              First Name *
             </label>
             <input
               id="bd-first-name"
               type="text"
               name="metadata__first_name"
-              placeholder="Audrow"
+              placeholder="Isaac"
               value={firstName}
               onInput={(e) =>
                 firstName.value = (e.target as HTMLInputElement).value}
@@ -76,13 +85,13 @@ export function SubscribePopup(
               htmlFor="bd-last-name"
               class="block text-sm font-medium text-gray-700 text-left"
             >
-              Last Name
+              Last Name (optional)
             </label>
             <input
               id="bd-last-name"
               type="text"
               name="metadata__last_name"
-              placeholder="Nash"
+              placeholder="Asimov"
               value={lastName}
               onInput={(e) =>
                 lastName.value = (e.target as HTMLInputElement).value}
@@ -94,13 +103,13 @@ export function SubscribePopup(
               htmlFor="bd-email"
               class="block text-sm font-medium text-gray-700 text-left"
             >
-              Email
+              Email *
             </label>
             <input
               id="bd-email"
               type="email"
               name="email"
-              placeholder="audrow@audrownashpodcast.com"
+              placeholder="isaac.asimov@foundation.gal"
               value={email}
               onInput={(e) =>
                 email.value = (e.target as HTMLInputElement).value}
@@ -116,12 +125,22 @@ export function SubscribePopup(
             >
               Cancel
             </button>
-            <button
-              type="submit"
-              class="bg-secondary hover:bg-primary text-white font-bold py-2 px-4 rounded transition duration-300"
-            >
-              Subscribe
-            </button>
+            <div class="relative group">
+              <button
+                type="submit"
+                disabled={!isFormValid.value}
+                class={`bg-secondary hover:bg-primary text-white font-bold py-2 px-4 rounded transition duration-300 ${
+                  !isFormValid.value ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                Subscribe
+              </button>
+              {!isFormValid.value && (
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Please provide a valid first name (at least 2 characters) and email address.
+                </div>
+              )}
+            </div>
           </div>
         </form>
       </div>
