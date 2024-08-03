@@ -5,6 +5,7 @@ import { PostFrontmatter, PostFrontmatterSchema } from "./schemas.ts";
 export interface Post extends PostFrontmatter {
   slug: string;
   content: string;
+  hasTranscript: boolean;
 }
 
 function embedTranscriptHtml(transcriptHtml?: string): string {
@@ -66,12 +67,22 @@ async function processPost(
       return `<blockquote class="border-l-4 pl-4 py-2 italic text-gray-600">${quoteContent}</blockquote>`;
     });
 
-    const embedMediaContent = embedMedia(processedBody, transcriptHtml);
+    // Append links to the bottom of the content if they exist
+    let contentWithLinks = processedBody;
+    if (validatedAttrs.links && validatedAttrs.links.length > 0) {
+      contentWithLinks += "\n\n## Episode Links\n\n";
+      validatedAttrs.links.forEach((link) => {
+        contentWithLinks += `- [${link.text}](${link.url})\n`;
+      });
+    }
+
+    const embedMediaContent = embedMedia(contentWithLinks, transcriptHtml);
     const html = await marked(embedMediaContent);
 
     return {
       slug,
       content: html,
+      hasTranscript: !!transcriptHtml,
       ...validatedAttrs,
     };
   } catch (error) {
