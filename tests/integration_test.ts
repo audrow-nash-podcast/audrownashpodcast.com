@@ -7,11 +7,11 @@ const BASE_URL = "http://localhost:8000";
 
 // Links to websites that frequently have rate limits or other issues
 const LINKS_TO_SKIP = [
-  SOCIAL_LINKS.LINKEDIN.url,
   SOCIAL_LINKS.SPOTIFY.url,
+  "https://www.linkedin.com",
 ];
 
-async function checkLinksOnPage(
+async function checkLinksAndImagesOnPage(
   page: Page,
   url: string,
   pageName: string,
@@ -25,37 +25,43 @@ async function checkLinksOnPage(
       anchors.map((a) => a.href).filter((href) => href.startsWith("http")),
   );
 
-  const checkLinkPromises = links.map(async (link) => {
-    if (checkedLinks.has(link) || LINKS_TO_SKIP.includes(link)) {
+  const images = await page.$$eval(
+    "img",
+    (imgs) =>
+      imgs.map((img) => img.src).filter((src) => src.startsWith("http")),
+  );
+
+  const checkPromises = [...links, ...images].map(async (resource) => {
+    if (
+      checkedLinks.has(resource) ||
+      LINKS_TO_SKIP.some((link) => resource.includes(link))
+    ) {
       return;
     }
 
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
-      const response = await fetch(link, { signal: controller.signal });
+      const response = await fetch(resource, { signal: controller.signal });
       clearTimeout(timeoutId);
+      await response.body?.cancel();
 
-      try {
-        assert(
-          response.status < 400,
-          `Broken link found on ${pageName} page: ${link} (status: ${response.status})`,
-        );
-      } finally {
-        await response.body?.cancel();
-      }
+      assert(
+        response.status < 400,
+        `Broken resource found on ${pageName} page: ${resource} (status: ${response.status})`,
+      );
 
-      checkedLinks.set(link, true);
+      checkedLinks.set(resource, true);
     } catch (error) {
       if (error.name === "AbortError") {
-        console.warn(`Timeout while fetching ${link}`);
+        console.warn(`Timeout while fetching ${resource}`);
       } else {
-        throw new Error(`Failed to fetch ${link}: ${error.message}`);
+        throw new Error(`Failed to fetch ${resource}: ${error.message}`);
       }
     }
   });
 
-  await Promise.all(checkLinkPromises);
+  await Promise.all(checkPromises);
 }
 
 async function testPageRendering(
@@ -196,30 +202,30 @@ Deno.test("All posts have valid metadata", async () => {
   }
 });
 
-Deno.test("All links are valid across all pages", async () => {
+Deno.test("All links and images are valid across all pages", async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const checkedLinks = new Map<string, boolean>();
+  const checkedResources = new Map<string, boolean>();
 
   try {
     // Check menu items and additional pages
     for (const item of [...MENU_ITEMS, ...ADDITIONAL_PAGES]) {
-      await checkLinksOnPage(
+      await checkLinksAndImagesOnPage(
         page,
         `${BASE_URL}${item.href}`,
         item.label,
-        checkedLinks,
+        checkedResources,
       );
     }
 
     // Check post pages
     const posts = await getPosts();
     for (const post of posts) {
-      await checkLinksOnPage(
+      await checkLinksAndImagesOnPage(
         page,
         `${BASE_URL}/posts/${post.slug}`,
         `Post: ${post.title}`,
-        checkedLinks,
+        checkedResources,
       );
     }
   } finally {
