@@ -20,7 +20,7 @@ backed by Hyundai, is using advanced data analysis to revolutionize risk
 assessment for robotics companies, potentially making robots safer and more
 affordable.
 
-## Three Surprising Ideas
+## 3 Ideas from the Interview
 
 1. Robots are significantly safer than humans in many scenarios, with autonomous
    vehicles showing up to 70% reduction in risky maneuvers compared to human
@@ -31,7 +31,7 @@ affordable.
    continuously improved through software updates, leading to potentially
    exponential improvements in safety over time.
 
-## Two Interesting Quotes
+## 2 Quotes that Stood Out
 
 > "We believe that the robotics industry is the next great frontier in terms of
 > what's going to happen with our world. And it's going to be a physical
@@ -43,7 +43,7 @@ affordable.
 > to happen again. Very hard with humans, because it's very hard to change human
 > behavior." - Sergey Litvinenko
 
-## One Opportunity
+## 1 Opportunity
 
 A potential opportunity lies in creating a venture capital arm specifically
 focused on robotics companies. With access to detailed performance and risk data
