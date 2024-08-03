@@ -1,9 +1,9 @@
-name: Deno CI
+name: CI
 
 on: [push]
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
