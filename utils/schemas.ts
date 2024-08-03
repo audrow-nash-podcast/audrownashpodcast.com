@@ -8,7 +8,6 @@ export const PostFrontmatterSchema = z.object({
     square: z.string(),
     rect: z.string().optional(),
   }),
-  transcript: z.string().optional(),
   links: z.array(z.object({
     url: z.string(),
     text: z.string(),
