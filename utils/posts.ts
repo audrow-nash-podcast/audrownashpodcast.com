@@ -45,7 +45,7 @@ function embedMedia(content: string, transcriptHtml?: string): string {
 async function processPost(
   slug: string,
   content: string,
-): Promise<Post | null> {
+): Promise<Post> {
   const { attrs, body } = extract(content);
 
   try {
@@ -75,8 +75,7 @@ async function processPost(
       ...validatedAttrs,
     };
   } catch (error) {
-    console.error(`Error parsing frontmatter for ${slug}:`, error);
-    return null;
+    throw new Error(`Error parsing frontmatter for ${slug}: ${error}`);
   }
 }
 
@@ -89,7 +88,7 @@ export async function getPosts(): Promise<Post[]> {
       const content = await Deno.readTextFile(`./posts/${file.name}`);
       const slug = file.name.replace(".md", "");
       const post = await processPost(slug, content);
-      if (post) posts.push(post);
+      posts.push(post);
     }
   }
 
