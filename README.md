@@ -18,6 +18,8 @@ and subscribe to the podcast.
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Marked](https://marked.js.org/) - A markdown parser and compiler
 - [Buttondown](https://buttondown.email/) - Email newsletter service
+- [Puppeteer](https://pptr.dev/) - A Node.js library for controlling headless
+  Chrome or Chromium
 
 ## Getting Started
 
@@ -47,6 +49,7 @@ This command will watch the project directory and restart as necessary.
 - `static/`: Static assets like images, icons, and global CSS
 - `utils/`: Utility functions for handling posts and other operations
 - `posts/`: Markdown files for blog posts
+- `transcripts/`: Transcripts for podcast episodes
 - `fresh.gen.ts`: Auto-generated file mapping routes and islands
 
 ## Deployment
@@ -74,6 +77,27 @@ Deno Deploy.
 - Newsletter subscription using Buttondown
 - Social media integration
 - SEO optimization
+
+## Testing
+
+This website uses Puppeteer for integration tests. To run the tests, you must
+first start the server with:
+
+```
+deno task start
+```
+
+Once the server is running, you can run the integration tests with:
+
+```
+deno task test:integration
+```
+
+Or simply:
+
+```
+deno task test
+```
 
 ## Contributing
 
