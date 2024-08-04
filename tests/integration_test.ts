@@ -8,7 +8,7 @@ const BASE_URL = "http://localhost:8000";
 // Links to websites that frequently have rate limits or other issues
 const LINKS_TO_SKIP = [
   SOCIAL_LINKS.SPOTIFY.url,
-  "https://www.linkedin.com",
+  "https://www.linkedin.com", // any linked in page
 ];
 
 async function checkLinksAndImagesOnPage(
