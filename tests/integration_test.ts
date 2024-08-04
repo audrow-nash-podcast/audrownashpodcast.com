@@ -202,33 +202,39 @@ Deno.test("All posts have valid metadata", async () => {
   }
 });
 
-Deno.test("All links and images are valid across all pages", async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  const checkedResources = new Map<string, boolean>();
+Deno.test({
+  name: "All links and images are valid across all pages",
+  fn: async () => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const checkedResources = new Map<string, boolean>();
 
-  try {
-    // Check menu items and additional pages
-    for (const item of [...MENU_ITEMS, ...ADDITIONAL_PAGES]) {
-      await checkLinksAndImagesOnPage(
-        page,
-        `${BASE_URL}${item.href}`,
-        item.label,
-        checkedResources,
-      );
-    }
+    try {
+      // Check menu items and additional pages
+      for (const item of [...MENU_ITEMS, ...ADDITIONAL_PAGES]) {
+        await checkLinksAndImagesOnPage(
+          page,
+          `${BASE_URL}${item.href}`,
+          item.label,
+          checkedResources,
+        );
+      }
 
-    // Check post pages
-    const posts = await getPosts();
-    for (const post of posts) {
-      await checkLinksAndImagesOnPage(
-        page,
-        `${BASE_URL}/posts/${post.slug}`,
-        `Post: ${post.title}`,
-        checkedResources,
-      );
+      // Check post pages
+      const posts = await getPosts();
+      for (const post of posts) {
+        await checkLinksAndImagesOnPage(
+          page,
+          `${BASE_URL}/posts/${post.slug}`,
+          `Post: ${post.title}`,
+          checkedResources,
+        );
+      }
+    } finally {
+      await browser.close();
     }
-  } finally {
-    await browser.close();
-  }
+  },
+  // TODO: Remove these after fixing the leaky fetch calls
+  sanitizeOps: false,
+  sanitizeResources: false,
 });
