@@ -1,6 +1,6 @@
 ---
 title: New Website and Newsletter Launch
-published_at: 2024-03-15T00:00:00.000Z
+published_at: 2024-07-15T12:00:00.000Z
 snippet: After six months of growth and some serious tech exploration, I've finally built a custom site for the Audrow Nash Podcast. No more wrestling with bloated platforms - just a clean space for all our episodes and a simple newsletter to keep you in the loop. Come check out our new digital digs!
 cover:
   square: /cover.png
