@@ -40,6 +40,30 @@ deno task start
 
 This command will watch the project directory and restart as necessary.
 
+### Setting Environment Variables
+
+> Currently, environment variables are needed for scripts, not deploying or
+> previewing the website. You can skip this if you only want to run the website.
+
+To set up the environment variables for the project:
+
+1. Copy the `.env-example` file in the root directory to a new file named
+   `.env`:
+
+```
+cp .env-example .env
+```
+
+2. Open the `.env` file and update the values as needed. The file contains
+   important configuration settings for the project, such as API keys.
+
+3. Make sure not to commit your `.env` file to version control. It's already
+   included in the `.gitignore` file to prevent accidental commits.
+
+Remember to update your `.env` file whenever you add new environment variables
+to the project. If you add new variables, make sure to update the `.env-example`
+file as well, so other developers know what variables are required.
+
 ## Project Structure
 
 - `routes/`: Contains the main page components (index, about, contact, posts,
