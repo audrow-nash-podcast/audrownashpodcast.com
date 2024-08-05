@@ -1,6 +1,6 @@
 ---
 title: Can Data-Driven Insurance Make Robots Safer and More Affordable?
-published_at: 2024-08-02T00:00:00.000Z
+published_at: 2024-08-06T12:00:00.000Z
 snippet: Explore how Koop AI is revolutionizing robotics insurance through data-driven risk assessment, potentially accelerating the adoption of robots across industries. Sergey Litvinenko shares insights on the future of robotics insurance and its impact on technological innovation.
 cover:
   rect: /posts/11-koop.png
@@ -45,9 +45,8 @@ affordable.
 
 ## 1 Opportunity
 
-A potential opportunity lies in creating a venture capital arm specifically
-focused on robotics companies. With access to detailed performance and risk data
-from insured robotics companies, such a venture arm could make highly informed
-investment decisions. This data-driven approach to venture capital could provide
-a significant competitive advantage in identifying and supporting promising
-robotics startups across various stages of growth.
+While Koop is focused on insurance, there's a clear opportunity for a company to
+develop comprehensive compliance automation software for robotics companies. As
+Sergey mentioned, robotics firms need to comply with various standards like ISO,
+SOC2, and NIST. A platform that streamlines this process and integrates with
+existing systems could be invaluable as the robotics industry grows.
