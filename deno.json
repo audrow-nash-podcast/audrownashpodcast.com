@@ -11,7 +11,8 @@
     "test": "deno task test:integration",
     "install-puppeteer": "deno run -A https://deno.land/x/puppeteer/install.ts",
     "test:integration": "deno test --allow-net --allow-read --allow-env --allow-write --allow-run tests/integration_test.ts",
-    "wait-for-server": "deno run --allow-net scripts/wait-for-server.ts"
+    "wait-for-server": "deno run --allow-net scripts/wait-for-server.ts",
+    "upload-newsletter": "deno run --allow-read --allow-net scripts/upload-newsletter.ts"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],
@@ -21,6 +22,8 @@
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "@std/assert": "jsr:@std/assert@^1.0.2",
+    "@std/cli": "jsr:@std/cli@^1.0.2",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.0",
     "@std/front-matter": "jsr:@std/front-matter@^0.224.3",
     "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.13",
     "marked": "npm:marked@^13.0.2",

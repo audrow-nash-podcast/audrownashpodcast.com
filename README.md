@@ -78,6 +78,25 @@ Deno Deploy.
 - Social media integration
 - SEO optimization
 
+## Scripts
+
+### Schedule Post on Buttondown
+
+To schedule a post on Buttondown for newsletter distribution:
+
+```
+deno task upload-newsletter <path-to-markdown-file>
+```
+
+This script reads the markdown file, processes its content, and interacts with
+the Buttondown API. If a `published_at` date is set in the frontmatter, it
+schedules the newsletter for that date. If no date is set, it creates a draft
+newsletter. The script uses the following:
+
+- Frontmatter data for newsletter metadata
+- Markdown content for the newsletter body
+- Buttondown API for creating drafts or scheduling newsletters
+
 ## Testing
 
 This website uses Puppeteer for integration tests. To run the tests, you must

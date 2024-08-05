@@ -5,7 +5,9 @@
       "jsr:@luca/esbuild-deno-loader@0.10.3": "jsr:@luca/esbuild-deno-loader@0.10.3",
       "jsr:@std/assert@^0.213.1": "jsr:@std/assert@0.213.1",
       "jsr:@std/assert@^1.0.2": "jsr:@std/assert@1.0.2",
+      "jsr:@std/cli@^1.0.2": "jsr:@std/cli@1.0.2",
       "jsr:@std/collections@^1.0.4": "jsr:@std/collections@1.0.5",
+      "jsr:@std/dotenv@^0.225.0": "jsr:@std/dotenv@0.225.0",
       "jsr:@std/encoding@0.213": "jsr:@std/encoding@0.213.1",
       "jsr:@std/front-matter@^0.224.3": "jsr:@std/front-matter@0.224.3",
       "jsr:@std/internal@^1.0.1": "jsr:@std/internal@1.0.1",
@@ -21,7 +23,8 @@
       "npm:marked@^13.0.2": "npm:marked@13.0.3",
       "npm:postcss@8.4.35": "npm:postcss@8.4.35",
       "npm:tailwindcss@3.4.1": "npm:tailwindcss@3.4.1_postcss@8.4.40",
-      "npm:zod": "npm:zod@3.23.8"
+      "npm:zod": "npm:zod@3.23.8",
+      "npm:zod@^3.23.8": "npm:zod@3.23.8"
     },
     "jsr": {
       "@luca/esbuild-deno-loader@0.10.3": {
@@ -41,8 +44,14 @@
           "jsr:@std/internal@^1.0.1"
         ]
       },
+      "@std/cli@1.0.2": {
+        "integrity": "fc12cf1a16d0e6c073dce3f95c202e580c428047ed719007617460b98e57923d"
+      },
       "@std/collections@1.0.5": {
         "integrity": "ab9eac23b57a0c0b89ba45134e61561f69f3d001f37235a248ed40be260c0c10"
+      },
+      "@std/dotenv@0.225.0": {
+        "integrity": "44db32932c67df82790a3e6847d7007befb6cc22d71f2f3ee7b7d00e1f0d6c94"
       },
       "@std/encoding@0.213.1": {
         "integrity": "fcbb6928713dde941a18ca5db88ca1544d0755ec8fb20fe61e2dc8144b390c62"
@@ -1189,7 +1198,8 @@
     }
   },
   "redirects": {
-    "https://esm.sh/v135/@types/babel__helper-validator-identifier@~7/index.d.ts": "https://esm.sh/v135/@types/babel__helper-validator-identifier@7.15.2/index.d.ts"
+    "https://esm.sh/v135/@types/babel__helper-validator-identifier@~7/index.d.ts": "https://esm.sh/v135/@types/babel__helper-validator-identifier@7.15.2/index.d.ts",
+    "https://esm.sh/v135/@types/marked@~5.0/index.d.ts": "https://esm.sh/v135/@types/marked@5.0.2/index.d.ts"
   },
   "remote": {
     "https://deno.land/std@0.208.0/assert/assert.ts": "9a97dad6d98c238938e7540736b826440ad8c1c1e54430ca4c4e623e585607ee",
@@ -1656,6 +1666,7 @@
     "https://esm.sh/*preact-render-to-string@6.3.1": "07807f027acf54b994b630bbb2a923f5a835f9544e01144f67ab292e90a431e4",
     "https://esm.sh/@babel/helper-validator-identifier@7.22.20": "daace34e028130297fddf97f3ef6deb4b05ec3eb46f5c5cacd6eaa43d6323b0a",
     "https://esm.sh/jszip@3.5.0": "88bf67ec93b7ae65365ab941d070f308bd1de9b6da481ea0820be3eacb312aa8",
+    "https://esm.sh/marked@5.0.2": "8f60810044e565ca9e4c5ea8631ef4a93fdfd87440fee73b15e9a2324cc4d39c",
     "https://esm.sh/preact@10.19.6": "281b115a9b79918c6b73382b4e818d6f9e48db9064b7fd4f75a45a4edee54145",
     "https://esm.sh/preact@10.19.6/compat": "bb05c43973d0804e7f02e18c19852af51cb5096362c3634f5f974119845025e6",
     "https://esm.sh/preact@10.19.6/debug": "0e16b3e9f45372501b91ecf69b1bcaf2b2dad3ac470ce75113d957acbd5e277d",
@@ -1676,6 +1687,7 @@
     "https://esm.sh/v135/isarray@1.0.0/denonext/isarray.mjs": "6368a41cf02c83843453ac571deb4c393c14e6f5e1d9ca6bbe43a4623f3856c8",
     "https://esm.sh/v135/jszip@3.5.0/denonext/jszip.mjs": "474dceb4f80035138f22795a6656fd7d0527169d78002b5d5c93467c2a8e8fac",
     "https://esm.sh/v135/lie@3.3.0/denonext/lie.mjs": "f3ab68d4533f6ff9271146709e40cbacde86c8c499ae3c3bc54f8372b6120cc9",
+    "https://esm.sh/v135/marked@5.0.2/denonext/marked.mjs": "3137232a98e8532cbde04a755275a1a0e392732c3636032a5fc90b8e8bf58789",
     "https://esm.sh/v135/pako@1.0.11/denonext/pako.mjs": "774bdd33d32995bf624fcac62a46d43bee09b255f1d8b954ea28f0fd9f8b96df",
     "https://esm.sh/v135/preact-render-to-string@6.3.1/X-ZS8q/denonext/preact-render-to-string.mjs": "bcaceb8c3938310aee3dd4f7b6f2136cf0b2b890988c2e6679485e052e76e920",
     "https://esm.sh/v135/process-nextick-args@2.0.1/denonext/process-nextick-args.mjs": "a57885eb600374afb2521e1d47e92df4d292d49c90c31496da5d0dde2f0d0b5f",
@@ -1687,6 +1699,8 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@^1.0.2",
+      "jsr:@std/cli@^1.0.2",
+      "jsr:@std/dotenv@^0.225.0",
       "jsr:@std/front-matter@^0.224.3",
       "npm:@tailwindcss/typography@^0.5.13",
       "npm:marked@^13.0.2",

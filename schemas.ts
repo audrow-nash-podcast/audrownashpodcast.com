@@ -2,7 +2,7 @@ import { z } from "npm:zod";
 
 export const PostFrontmatterSchema = z.object({
   title: z.string(),
-  published_at: z.date(),
+  published_at: z.date().nullable(),
   snippet: z.string(),
   cover: z.object({
     square: z.string(),
@@ -13,5 +13,9 @@ export const PostFrontmatterSchema = z.object({
     text: z.string(),
   })).optional(),
 });
-
 export type PostFrontmatter = z.infer<typeof PostFrontmatterSchema>;
+
+export const EnvSchema = z.object({
+  BUTTONDOWN_API_KEY: z.string(),
+});
+export type Env = z.infer<typeof EnvSchema>;

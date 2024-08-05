@@ -1,6 +1,6 @@
 import { extractYaml as extract } from "@std/front-matter";
 import { marked } from "marked";
-import { PostFrontmatter, PostFrontmatterSchema } from "./schemas.ts";
+import { PostFrontmatter, PostFrontmatterSchema } from "../schemas.ts";
 
 export interface Post extends PostFrontmatter {
   slug: string;
@@ -103,9 +103,12 @@ export async function getPosts(): Promise<Post[]> {
     }
   }
 
-  return posts.sort((a, b) =>
-    b.published_at.getTime() - a.published_at.getTime()
-  );
+  return posts.sort((a, b) => {
+    if (!a.published_at && !b.published_at) return 0;
+    if (!a.published_at) return 1;
+    if (!b.published_at) return -1;
+    return b.published_at.getTime() - a.published_at.getTime();
+  });
 }
 
 export async function getPost(slug: string): Promise<Post | null> {
