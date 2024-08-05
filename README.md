@@ -40,6 +40,14 @@ deno task start
 
 This command will watch the project directory and restart as necessary.
 
+For development with all posts visible (including unpublished ones), use:
+
+```
+deno task dev
+```
+
+This command sets the `SHOW_ALL_POSTS` environment variable to true.
+
 ### Setting Environment Variables
 
 > Currently, environment variables are needed for scripts, not deploying or

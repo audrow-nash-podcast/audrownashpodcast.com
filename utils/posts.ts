@@ -93,13 +93,20 @@ async function processPost(
 export async function getPosts(): Promise<Post[]> {
   const files = Deno.readDir("./posts");
   const posts: Post[] = [];
+  const showAllPosts = Deno.env.get("SHOW_ALL_POSTS") === "true";
 
   for await (const file of files) {
     if (file.isFile && file.name.endsWith(".md")) {
       const content = await Deno.readTextFile(`./posts/${file.name}`);
       const slug = file.name.replace(".md", "");
       const post = await processPost(slug, content);
-      posts.push(post);
+
+      // Include the post if showAllPosts is true or if it's published
+      if (
+        showAllPosts || !post.published_at || post.published_at <= new Date()
+      ) {
+        posts.push(post);
+      }
     }
   }
 
