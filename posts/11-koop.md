@@ -6,10 +6,12 @@ cover:
   rect: /posts/11-koop.png
   square: /posts/11-koop-square.png
 links:
+  - url: https://www.koop.ai/
+    text: Koop AI's Website
+  - url: https://www.linkedin.com/company/koop-ai
+    text: Koop AI's LinkedIn
   - url: https://www.linkedin.com/in/sergey-from-koop
     text: Sergey's LinkedIn
-  - url: https://www.koop.ai/
-    text: Koop AI Website
 ---
 
 https://youtu.be/Dkg2uHhGXao
