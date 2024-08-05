@@ -50,4 +50,13 @@ export const MENU_ITEMS: MenuItem[] = [
   { href: "/contact", label: "Contact", page: "contact" },
 ];
 
+export const ADDITIONAL_PAGES: MenuItem[] = [
+  {
+    href: "/subscription-confirmation",
+    label: "Subscription Confirmation",
+    page: undefined,
+  },
+  { href: "/non-existent-page", label: "404 Page", page: undefined },
+];
+
 export const BUTTONDOWN_NEWSLETTER_NAME = "audrow";

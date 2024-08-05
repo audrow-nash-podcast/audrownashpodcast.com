@@ -13,7 +13,7 @@ export const handler: Handlers<Post[]> = {
 export default function PostsIndex({ data: posts }: PageProps<Post[]>) {
   return (
     <PageLayout title="Posts" currentPage="posts">
-      <h2 class="text-4xl font-bold mb-8">Posts</h2>
+      <h2 class="text-4xl font-bold mb-8">All Posts</h2>
       <ul class="space-y-8">
         {posts.map((post) => <PostCard key={post.slug} post={post} />)}
       </ul>

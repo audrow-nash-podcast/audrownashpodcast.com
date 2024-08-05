@@ -29,7 +29,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
       </div>
       <article class="prose prose-lg lg:prose-xl mx-auto">
         <h1>{post.title}</h1>
-        <p class="text-gray-600">{post.publishedAt.toDateString()}</p>
+        <p class="text-gray-600">{post.published_at.toDateString()}</p>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </article>
     </PageLayout>
