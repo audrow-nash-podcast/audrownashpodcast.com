@@ -12,7 +12,7 @@
     "install-puppeteer": "deno run -A https://deno.land/x/puppeteer/install.ts",
     "test:integration": "deno test --allow-net --allow-read --allow-env --allow-write --allow-run tests/integration_test.ts",
     "wait-for-server": "deno run --allow-net scripts/wait-for-server.ts",
-    "upload-newsletter": "deno run --allow-read --allow-net scripts/upload-newsletter.ts"
+    "upload-newsletter": "deno run --allow-read --allow-net --allow-env scripts/upload-newsletter.ts"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],

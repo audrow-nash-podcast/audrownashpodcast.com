@@ -14,8 +14,3 @@ export const PostFrontmatterSchema = z.object({
   })).optional(),
 });
 export type PostFrontmatter = z.infer<typeof PostFrontmatterSchema>;
-
-export const EnvSchema = z.object({
-  BUTTONDOWN_API_KEY: z.string(),
-});
-export type Env = z.infer<typeof EnvSchema>;

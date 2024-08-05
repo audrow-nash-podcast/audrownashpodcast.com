@@ -1,12 +1,8 @@
 import { marked } from "marked";
 import { parseArgs } from "@std/cli/parse-args";
 import { extractYaml as extract } from "@std/front-matter";
-import {
-  EnvSchema,
-  PostFrontmatter,
-  PostFrontmatterSchema,
-} from "../schemas.ts";
-import { loadSync } from "@std/dotenv";
+import { PostFrontmatter, PostFrontmatterSchema } from "../schemas.ts";
+import { load } from "@std/dotenv";
 
 type EmailData =
   & {
@@ -116,13 +112,12 @@ async function readAndProcessMarkdownFile(
 }
 
 async function main() {
-  const envResult = EnvSchema.safeParse(loadSync());
-  if (!envResult.success) {
-    console.error("Error: .env file is invalid");
-    console.log(envResult.error);
+  await load({ export: true });
+  const buttonDownApiKey = Deno.env.get("BUTTONDOWN_API_KEY");
+  if (!buttonDownApiKey) {
+    console.error("BUTTONDOWN_API_KEY is not set.");
     Deno.exit(1);
   }
-  const env = envResult.data;
 
   const args = parseArgs(Deno.args);
   if (args._.length !== 1) {
@@ -138,7 +133,7 @@ async function main() {
     const { frontmatter, htmlContent, slug } = await readAndProcessMarkdownFile(
       filePath,
     );
-    const api = new ButtondownAPI(env.BUTTONDOWN_API_KEY);
+    const api = new ButtondownAPI(buttonDownApiKey);
 
     if (frontmatter.published_at) {
       await api.scheduleEmail(
