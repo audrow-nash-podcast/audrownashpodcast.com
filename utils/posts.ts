@@ -6,6 +6,10 @@ export interface Post extends PostFrontmatter {
   slug: string;
   content: string;
   hasTranscript: boolean;
+  cover: {
+    square: string;
+    rect?: string;
+  };
 }
 
 function embedTranscriptHtml(transcriptHtml?: string): string {

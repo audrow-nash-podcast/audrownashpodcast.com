@@ -1,5 +1,11 @@
 import { MenuItem, SocialLinks } from "./types.ts";
 
+export const BASE_URL = "https://audrownashpodcast.com";
+
+export const BUTTONDOWN_NEWSLETTER_NAME = "audrow";
+
+export const THEME_COLOR = "#3A7E99";
+
 export const SOCIAL_LINKS: SocialLinks = {
   X: {
     url: "https://x.com/audrow",
@@ -58,5 +64,3 @@ export const ADDITIONAL_PAGES: MenuItem[] = [
   },
   { href: "/non-existent-page", label: "404 Page", page: undefined },
 ];
-
-export const BUTTONDOWN_NEWSLETTER_NAME = "audrow";

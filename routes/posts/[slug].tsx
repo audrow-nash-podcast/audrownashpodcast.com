@@ -18,6 +18,7 @@ export default function PostPage({ data: post }: PageProps<Post>) {
       title={post.title}
       currentPage="posts"
       includeSubscribeCta={true}
+      ogImage={post.cover.rect || post.cover.square}
     >
       <div class="mb-8">
         <a

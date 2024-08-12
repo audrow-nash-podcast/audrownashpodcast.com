@@ -9,16 +9,18 @@ type PageLayoutProps = {
   currentPage: PageName;
   children: preact.ComponentChildren;
   includeSubscribeCta?: boolean;
+  ogImage?: string;
 };
 
 export function PageLayout(
-  { title, currentPage, children, includeSubscribeCta = false }:
+  { title, currentPage, children, includeSubscribeCta = false, ogImage }:
     PageLayoutProps,
 ) {
   return (
     <>
       <Head>
         <title>{title} - Audrow Nash Podcast</title>
+        {ogImage && <meta property="og:image" content={ogImage} />}
       </Head>
       <div class="min-h-screen flex flex-col bg-white text-gray-800 font-sans">
         <Header currentPage={currentPage} />

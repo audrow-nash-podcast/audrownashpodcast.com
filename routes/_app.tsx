@@ -1,4 +1,5 @@
 import { type PageProps } from "$fresh/server.ts";
+import { BASE_URL, THEME_COLOR } from "../constants.ts";
 
 export default function App({ Component }: PageProps) {
   return (
@@ -25,9 +26,10 @@ export default function App({ Component }: PageProps) {
           content="Join Audrow Nash for in-depth conversations with robotics experts, exploring cutting-edge technologies and the future of intelligent machines."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://audrownashpodcast.com" />
-        <link rel="canonical" href="https://audrownashpodcast.com" />
-        <meta name="theme-color" content="#3A7E99" />
+        <meta property="og:url" content={BASE_URL} />
+        <link rel="canonical" href={BASE_URL} />
+        <meta property="og:image" content={`${BASE_URL}/share-image.png`} />
+        <meta name="theme-color" content={THEME_COLOR} />
         <style>
           {`
           @font-face {
