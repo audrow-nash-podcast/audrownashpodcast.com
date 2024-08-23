@@ -16,7 +16,6 @@ links:
     text: Pipedream Labs on LinkedIn
   - url: https://www.linkedin.com/in/canonreeves/
     text: Canon Reeves on LinkedIn
-
 ---
 
 https://youtu.be/UWSER31pbYE
