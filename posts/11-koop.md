@@ -3,8 +3,8 @@ title: Can Data-Driven Insurance Make Robots Safer and More Affordable?
 published_at: 2024-08-06T12:00:00.000Z
 snippet: Explore how Koop AI is revolutionizing robotics insurance through data-driven risk assessment, potentially accelerating the adoption of robots across industries. Sergey Litvinenko shares insights on the future of robotics insurance and its impact on technological innovation.
 cover:
-  rect: /posts/11-koop-rect.png
-  square: /posts/11-koop-square.png
+  rect: /posts/011-koop-rect.png
+  square: /posts/011-koop-square.png
 links:
   - url: https://www.linkedin.com/in/sergey-from-koop
     text: Sergey's LinkedIn

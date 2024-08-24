@@ -3,8 +3,8 @@ title: "From Drive-Thru to City-Wide: Scaling an Innovative Robotic Delivery Sys
 published_at: 2024-08-23T12:00:00.000Z
 snippet: Explore how Pipedream Labs is revolutionizing last-mile delivery through underground pipes and autonomous robots, potentially transforming urban logistics and the future of food delivery.
 cover:
-  rect: /posts/12-pipedream-rect.png
-  square: /posts/12-pipedream-square.png
+  rect: /posts/012-pipedream-rect.png
+  square: /posts/012-pipedream-square.png
 links:
   - url: https://www.pipedreamlabs.co/
     text: Pipedream Labs' Website
