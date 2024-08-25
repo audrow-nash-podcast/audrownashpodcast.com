@@ -1,6 +1,9 @@
 import { type PageProps } from "$fresh/server.ts";
 
-export default function App({ Component }: PageProps) {
+export default function App({ Component, url }: PageProps) {
+  const domain = url.origin;
+  const THEME_COLOR = "#3A7E99";
+
   return (
     <html lang="en">
       <head>
@@ -25,12 +28,20 @@ export default function App({ Component }: PageProps) {
           content="Join Audrow Nash for in-depth conversations with robotics experts, exploring cutting-edge technologies and the future of intelligent machines."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="/" />
-        <meta property="og:image" content="/share.png" />
+        <meta property="og:url" content={domain} />
+        <meta property="og:image" content={`${domain}/share.png`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/share.png" />
-        <link rel="canonical" href="/" />
-        <meta name="theme-color" content="#3A7E99" />
+        <meta
+          name="twitter:title"
+          content="Audrow Nash Podcast - Exploring the Frontiers of Robotics"
+        />
+        <meta name="twitter:image" content={`${domain}/share.png`} />
+        <meta
+          name="twitter:description"
+          content="Join Audrow Nash for in-depth conversations with robotics experts, exploring cutting-edge technologies and the future of intelligent machines."
+        />
+        <link rel="canonical" href={domain} />
+        <meta name="theme-color" content={THEME_COLOR} />
         <style>
           {`
           @font-face {
