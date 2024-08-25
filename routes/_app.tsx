@@ -29,13 +29,13 @@ export default function App({ Component, url }: PageProps) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={domain} />
-        <meta property="og:image" content={`${domain}/share-x.png`} />
+        <meta property="og:image" content={`${domain}/share.png`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
           content="Audrow Nash Podcast - Exploring the Frontiers of Robotics"
         />
-        <meta name="twitter:image" content={`${domain}/share.png`} />
+        <meta name="twitter:image" content={`${domain}/share-x.png`} />
         <meta
           name="twitter:description"
           content="Join Audrow Nash for in-depth conversations with robotics experts, exploring cutting-edge technologies and the future of intelligent machines."
