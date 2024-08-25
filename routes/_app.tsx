@@ -47,7 +47,7 @@ export default function App(pageProps: PageProps & { data?: unknown }) {
           content={description}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={domain} />
+        <meta property="og:url" content={url.href} />
         <meta property="og:image" content={shareImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
