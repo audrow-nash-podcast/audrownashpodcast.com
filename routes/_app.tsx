@@ -29,7 +29,7 @@ export default function App({ Component, url }: PageProps) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={domain} />
-        <meta property="og:image" content={`${domain}/share.png`} />
+        <meta property="og:image" content={`${domain}/share-x.png`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
