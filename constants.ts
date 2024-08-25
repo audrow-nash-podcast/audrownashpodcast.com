@@ -60,3 +60,9 @@ export const ADDITIONAL_PAGES: MenuItem[] = [
 ];
 
 export const BUTTONDOWN_NEWSLETTER_NAME = "audrow";
+
+export const THEME_COLOR = "#3A7E99";
+export const DEFAULT_SHARE_IMAGE = "/share.png";
+export const DEFAULT_SHARE_X_IMAGE = "/share-x.png";
+export const DEFAULT_DESCRIPTION =
+  "Join Audrow Nash for in-depth conversations with robotics experts, exploring cutting-edge technologies and the future of intelligent machines.";

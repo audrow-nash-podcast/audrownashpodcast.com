@@ -1,14 +1,14 @@
 import { type PageProps } from "$fresh/server.ts";
 import { Post } from "../utils/posts.ts";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_SHARE_IMAGE,
+  DEFAULT_SHARE_X_IMAGE,
+  THEME_COLOR,
+} from "../constants.ts";
 
 export default function App(pageProps: PageProps & { data?: unknown }) {
   const { data, url, Component } = pageProps;
-
-  const THEME_COLOR = "#3A7E99";
-  const DEFAULT_SHARE_IMAGE = "/share.png";
-  const DEFAULT_SHARE_X_IMAGE = "/share-x.png";
-  const DEFAULT_DESCRIPTION =
-    "Join Audrow Nash for in-depth conversations with robotics experts, exploring cutting-edge technologies and the future of intelligent machines.";
 
   const domain = url.origin;
   const post = data?.post as Post | undefined;
