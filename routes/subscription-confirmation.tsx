@@ -12,6 +12,7 @@ export default function SubscriptionConfirmation() {
             src="/cover.png"
             alt="Audrow Nash Podcast Cover"
             class="w-48 h-48 mx-auto rounded-xl shadow-lg"
+            loading="lazy"
           />
         </div>
         <p class="text-xl mb-10 text-gray-700 leading-relaxed">

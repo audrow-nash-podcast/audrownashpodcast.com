@@ -54,7 +54,12 @@ export function SubscribePopup(
             />
           </svg>
         </button>
-        <img src="/cover.png" alt="Logo" class="w-24 h-24 mx-auto mb-2" />
+        <img
+          src="/cover.png"
+          alt="Logo"
+          class="w-24 h-24 mx-auto mb-2"
+          loading="lazy"
+        />
         <h3 class="text-xl font-semibold mb-4 text-center">
           Audrow Nash Podcast
         </h3>
