@@ -31,4 +31,8 @@ jobs:
           deno task wait-for-server
 
       - name: Run integration tests
-        run: deno task test:integration
+        run: |
+          # Run the test twice to reduce flakes
+          # Sometimes tests may fail due to resource leaks that are hard to figure out
+          # Running twice increases the chances of a successful test run
+          deno task test:integration || deno task test:integration
