@@ -2,8 +2,7 @@ import { assert, assertEquals, assertNotEquals } from "@std/assert";
 import puppeteer, { Page } from "puppeteer";
 import { getPosts } from "../utils/posts.ts";
 import { ADDITIONAL_PAGES, MENU_ITEMS, SOCIAL_LINKS } from "../constants.ts";
-
-const BASE_URL = "http://localhost:8000";
+import { BASE_URL, isServerReady } from "../scripts/wait-for-server.ts";
 
 // Links to websites that frequently have rate limits or other issues
 const LINKS_TO_SKIP = [
@@ -82,19 +81,10 @@ async function testPageRendering(
   await browser.close();
 }
 
-async function isServerRunning() {
-  try {
-    const response = await fetch(BASE_URL);
-    return response.status === 200;
-  } catch {
-    return false;
-  }
-}
-
 Deno.test({
   name: "Server is running",
   fn: async () => {
-    const running = await isServerRunning();
+    const running = await isServerReady();
     assert(
       running,
       "Server is not running. Please start the server before running tests.",
@@ -199,9 +189,6 @@ Deno.test({
       );
     }
   },
-  // TODO: Remove these after fixing the leaky fetch calls
-  sanitizeResources: false,
-  sanitizeOps: false,
 });
 
 Deno.test({
@@ -236,7 +223,4 @@ Deno.test({
       await browser.close();
     }
   },
-  // TODO: Remove these after fixing the leaky fetch calls
-  sanitizeOps: false,
-  sanitizeResources: false,
 });
