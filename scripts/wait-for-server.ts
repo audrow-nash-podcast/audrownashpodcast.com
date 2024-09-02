@@ -1,18 +1,21 @@
+export const BASE_URL = "http://localhost:8000";
+
 const MAX_RETRIES = 30;
 const RETRY_INTERVAL = 1000; // 1 second
 
-async function isServerReady() {
+export async function isServerReady(baseUrl: string = BASE_URL) {
   try {
-    const response = await fetch("http://localhost:8000");
+    const response = await fetch(baseUrl);
+    await response.text(); // Ensure the response is fully read
     return response.status === 200;
   } catch {
     return false;
   }
 }
 
-async function waitForServer() {
+export async function waitForServer() {
   for (let i = 0; i < MAX_RETRIES; i++) {
-    if (await isServerReady()) {
+    if (await isServerReady(BASE_URL)) {
       console.log("Server is ready!");
       Deno.exit(0);
     }
@@ -22,4 +25,7 @@ async function waitForServer() {
   Deno.exit(1);
 }
 
-waitForServer();
+if (import.meta.main) {
+  waitForServer();
+  console.log("Server is ready!");
+}
