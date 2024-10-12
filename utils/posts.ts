@@ -6,6 +6,8 @@ export interface Post extends PostFrontmatter {
   slug: string;
   content: string;
   hasTranscript: boolean;
+  transcript: string;
+  tableOfContents: string;
 }
 
 function embedTranscriptHtml(transcriptHtml?: string): string {
@@ -43,6 +45,23 @@ function embedMedia(content: string, transcriptHtml?: string): string {
   return content;
 }
 
+function generateTableOfContents(content: string): { toc: string; processedContent: string } {
+  const headers: { id: string; text: string; level: number }[] = [];
+  let idCounter = 0;
+
+  const processedContent = content.replace(/<h([2-6])>(.*?)<\/h\1>/g, (_match, level, text) => {
+    const id = `section-${++idCounter}`;
+    headers.push({ id, text, level: parseInt(level) });
+    return `<h${level} id="${id}">${text}</h${level}>`;
+  });
+
+  const toc = headers.map(header =>
+    `<li class="ml-${(header.level - 2) * 4}"><a href="#${header.id}" class="text-secondary hover:text-primary">${header.text}</a></li>`
+  ).join('\n');
+
+  return { toc, processedContent };
+}
+
 async function processPost(
   slug: string,
   content: string,
@@ -54,9 +73,12 @@ async function processPost(
 
     // Load transcript if it exists
     let transcriptHtml = "";
+    let tableOfContents = "";
     try {
       const transcript = await Deno.readTextFile(`./transcripts/${slug}.md`);
-      transcriptHtml = await marked(transcript);
+      const { toc, processedContent } = generateTableOfContents(await marked(transcript));
+      transcriptHtml = processedContent;
+      tableOfContents = toc;
     } catch {
       // Transcript file doesn't exist, continue without it
     }
@@ -83,6 +105,8 @@ async function processPost(
       slug,
       content: html,
       hasTranscript: !!transcriptHtml,
+      transcript: transcriptHtml,
+      tableOfContents,
       ...validatedAttrs,
     };
   } catch (error) {

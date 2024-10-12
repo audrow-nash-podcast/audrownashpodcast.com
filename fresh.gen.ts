@@ -7,7 +7,8 @@ import * as $_app from "./routes/_app.tsx";
 import * as $about from "./routes/about.tsx";
 import * as $contact from "./routes/contact.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $posts_slug_ from "./routes/posts/[slug].tsx";
+import * as $posts_slug_index from "./routes/posts/[slug]/index.tsx";
+import * as $posts_slug_transcript from "./routes/posts/[slug]/transcript.tsx";
 import * as $posts_index from "./routes/posts/index.tsx";
 import * as $subscription_confirmation from "./routes/subscription-confirmation.tsx";
 import * as $where_to_find from "./routes/where-to-find.tsx";
@@ -15,7 +16,7 @@ import * as $FoldingSection from "./islands/FoldingSection.tsx";
 import * as $Header from "./islands/Header.tsx";
 import * as $SubscribeCta from "./islands/SubscribeCta.tsx";
 import * as $SubscribePopup from "./islands/SubscribePopup.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
@@ -24,7 +25,8 @@ const manifest = {
     "./routes/about.tsx": $about,
     "./routes/contact.tsx": $contact,
     "./routes/index.tsx": $index,
-    "./routes/posts/[slug].tsx": $posts_slug_,
+    "./routes/posts/[slug]/index.tsx": $posts_slug_index,
+    "./routes/posts/[slug]/transcript.tsx": $posts_slug_transcript,
     "./routes/posts/index.tsx": $posts_index,
     "./routes/subscription-confirmation.tsx": $subscription_confirmation,
     "./routes/where-to-find.tsx": $where_to_find,

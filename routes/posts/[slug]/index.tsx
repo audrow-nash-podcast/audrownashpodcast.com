@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, Post } from "../../utils/posts.ts";
-import { PageLayout } from "../../components/PageLayout.tsx";
+import { getPost, Post } from "../../../utils/posts.ts";
+import { PageLayout } from "../../../components/PageLayout.tsx";
 
 export const handler: Handlers<{ post: Post; shareImagePath: string } | null> =
   {
@@ -37,6 +37,16 @@ export default function PostPage(
           {post.published_at ? post.published_at.toDateString() : "No date"}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        {post.hasTranscript && (
+          <div class="mt-8">
+            <a
+              href={`/posts/${post.slug}/transcript`}
+              class="text-secondary hover:text-primary transition duration-300"
+            >
+              View Full Transcript
+            </a>
+          </div>
+        )}
       </article>
     </PageLayout>
   );
