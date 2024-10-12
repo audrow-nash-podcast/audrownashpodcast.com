@@ -47,12 +47,17 @@ function embedMedia(content: string, transcriptHtml?: string): string {
 
 function generateTableOfContents(content: string): { toc: string; processedContent: string } {
   const headers: { id: string; text: string; level: number }[] = [];
-  let idCounter = 0;
 
   const processedContent = content.replace(/<h([2-6])>(.*?)<\/h\1>/g, (_match, level, text) => {
-    const id = `section-${++idCounter}`;
-    headers.push({ id, text, level: parseInt(level) });
-    return `<h${level} id="${id}">${text}</h${level}>`;
+    const slug = text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '') // Remove non-word chars (except spaces and hyphens)
+      .replace(/\s+/g, '-')     // Replace spaces with hyphens
+      .replace(/--+/g, '-')     // Replace multiple hyphens with single hyphen
+      .trim();                  // Trim leading/trailing hyphens
+
+    headers.push({ id: slug, text, level: parseInt(level) });
+    return `<h${level} id="${slug}">${text}</h${level}>`;
   });
 
   const toc = headers.map(header =>
