@@ -6,18 +6,15 @@ export interface Post extends PostFrontmatter {
   slug: string;
   content: string;
   hasTranscript: boolean;
+  transcript: string;
+  tableOfContents: string;
 }
 
-function embedTranscriptHtml(transcriptHtml?: string): string {
-  if (!transcriptHtml) return "";
-  return `<details class="mt-4">
-    <summary class="cursor-pointer font-semibold">Full transcript</summary>
-    <div class="mt-2 bg-gray-100 rounded border border-gray-500 p-4">
-      <div style="height: 50vh; overflow-y: auto; padding: 1rem;">${transcriptHtml}</div></div>
-  </details>`;
-}
-
-function embedMedia(content: string, transcriptHtml?: string): string {
+function embedMedia(
+  content: string,
+  slug: string,
+  hasTranscript: boolean,
+): string {
   const youtubeRegex =
     /(?:https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)(?:&\S*)?)|(?:https?:\/\/youtu\.be\/([a-zA-Z0-9_-]+))/g;
   content = content.replace(youtubeRegex, (_match, videoId1, videoId2) => {
@@ -27,7 +24,10 @@ function embedMedia(content: string, transcriptHtml?: string): string {
       <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>`;
 
-    return embedHtml + embedTranscriptHtml(transcriptHtml);
+    return embedHtml +
+      (hasTranscript
+        ? `<p class="mt-2"><a href="/posts/${slug}/transcript" class="text-secondary hover:text-primary">View Transcript</a></p>`
+        : "");
   });
 
   const xRegex = /https?:\/\/(?:www\.)?(?:twitter|x)\.com\/\w+\/status\/(\d+)/g;
@@ -37,10 +37,42 @@ function embedMedia(content: string, transcriptHtml?: string): string {
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>`;
 
-    return embedHtml + embedTranscriptHtml(transcriptHtml);
+    return embedHtml +
+      (hasTranscript
+        ? `<p class="mt-2"><a href="/posts/${slug}/transcript" class="text-secondary hover:text-primary">View Transcript</a></p>`
+        : "");
   });
 
   return content;
+}
+
+function generateTableOfContents(
+  content: string,
+): { toc: string; processedContent: string } {
+  const headers: { id: string; text: string; level: number }[] = [];
+
+  const processedContent = content.replace(
+    /<h([2-6])>(.*?)<\/h\1>/g,
+    (_match, level, text) => {
+      const slug = text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "") // Remove non-word chars (except spaces and hyphens)
+        .replace(/\s+/g, "-") // Replace spaces with hyphens
+        .replace(/--+/g, "-") // Replace multiple hyphens with single hyphen
+        .trim(); // Trim leading/trailing hyphens
+
+      headers.push({ id: slug, text, level: parseInt(level) });
+      return `<h${level} id="${slug}">${text}</h${level}>`;
+    },
+  );
+
+  const toc = headers.map((header) =>
+    `<li class="ml-${
+      (header.level - 2) * 4
+    }"><a href="#${header.id}" class="text-secondary hover:text-primary">${header.text}</a></li>`
+  ).join("\n");
+
+  return { toc, processedContent };
 }
 
 async function processPost(
@@ -54,9 +86,16 @@ async function processPost(
 
     // Load transcript if it exists
     let transcriptHtml = "";
+    let tableOfContents = "";
+    let hasTranscript = false;
     try {
       const transcript = await Deno.readTextFile(`./transcripts/${slug}.md`);
-      transcriptHtml = await marked(transcript);
+      const { toc, processedContent } = generateTableOfContents(
+        await marked(transcript),
+      );
+      transcriptHtml = processedContent;
+      tableOfContents = toc;
+      hasTranscript = true;
     } catch {
       // Transcript file doesn't exist, continue without it
     }
@@ -76,13 +115,15 @@ async function processPost(
       });
     }
 
-    const embedMediaContent = embedMedia(contentWithLinks, transcriptHtml);
+    const embedMediaContent = embedMedia(contentWithLinks, slug, hasTranscript);
     const html = await marked(embedMediaContent);
 
     return {
       slug,
       content: html,
-      hasTranscript: !!transcriptHtml,
+      hasTranscript,
+      transcript: transcriptHtml,
+      tableOfContents,
       ...validatedAttrs,
     };
   } catch (error) {

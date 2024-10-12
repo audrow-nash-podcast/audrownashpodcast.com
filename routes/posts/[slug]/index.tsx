@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPost, Post } from "../../utils/posts.ts";
-import { PageLayout } from "../../components/PageLayout.tsx";
+import { getPost, Post } from "../../../utils/posts.ts";
+import { PageLayout } from "../../../components/PageLayout.tsx";
 
 export const handler: Handlers<{ post: Post; shareImagePath: string } | null> =
   {
