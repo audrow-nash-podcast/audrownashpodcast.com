@@ -37,16 +37,6 @@ export default function PostPage(
           {post.published_at ? post.published_at.toDateString() : "No date"}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        {post.hasTranscript && (
-          <div class="mt-8">
-            <a
-              href={`/posts/${post.slug}/transcript`}
-              class="text-secondary hover:text-primary transition duration-300"
-            >
-              View Full Transcript
-            </a>
-          </div>
-        )}
       </article>
     </PageLayout>
   );

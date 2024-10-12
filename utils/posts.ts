@@ -10,16 +10,11 @@ export interface Post extends PostFrontmatter {
   tableOfContents: string;
 }
 
-function embedTranscriptHtml(transcriptHtml?: string): string {
-  if (!transcriptHtml) return "";
-  return `<details class="mt-4">
-    <summary class="cursor-pointer font-semibold">Full transcript</summary>
-    <div class="mt-2 bg-gray-100 rounded border border-gray-500 p-4">
-      <div style="height: 50vh; overflow-y: auto; padding: 1rem;">${transcriptHtml}</div></div>
-  </details>`;
-}
-
-function embedMedia(content: string, transcriptHtml?: string): string {
+function embedMedia(
+  content: string,
+  slug: string,
+  hasTranscript: boolean,
+): string {
   const youtubeRegex =
     /(?:https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)(?:&\S*)?)|(?:https?:\/\/youtu\.be\/([a-zA-Z0-9_-]+))/g;
   content = content.replace(youtubeRegex, (_match, videoId1, videoId2) => {
@@ -29,7 +24,10 @@ function embedMedia(content: string, transcriptHtml?: string): string {
       <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>`;
 
-    return embedHtml + embedTranscriptHtml(transcriptHtml);
+    return embedHtml +
+      (hasTranscript
+        ? `<p class="mt-2"><a href="/posts/${slug}/transcript" class="text-secondary hover:text-primary">View Transcript</a></p>`
+        : "");
   });
 
   const xRegex = /https?:\/\/(?:www\.)?(?:twitter|x)\.com\/\w+\/status\/(\d+)/g;
@@ -39,7 +37,10 @@ function embedMedia(content: string, transcriptHtml?: string): string {
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>`;
 
-    return embedHtml + embedTranscriptHtml(transcriptHtml);
+    return embedHtml +
+      (hasTranscript
+        ? `<p class="mt-2"><a href="/posts/${slug}/transcript" class="text-secondary hover:text-primary">View Transcript</a></p>`
+        : "");
   });
 
   return content;
@@ -86,6 +87,7 @@ async function processPost(
     // Load transcript if it exists
     let transcriptHtml = "";
     let tableOfContents = "";
+    let hasTranscript = false;
     try {
       const transcript = await Deno.readTextFile(`./transcripts/${slug}.md`);
       const { toc, processedContent } = generateTableOfContents(
@@ -93,6 +95,7 @@ async function processPost(
       );
       transcriptHtml = processedContent;
       tableOfContents = toc;
+      hasTranscript = true;
     } catch {
       // Transcript file doesn't exist, continue without it
     }
@@ -112,13 +115,13 @@ async function processPost(
       });
     }
 
-    const embedMediaContent = embedMedia(contentWithLinks, transcriptHtml);
+    const embedMediaContent = embedMedia(contentWithLinks, slug, hasTranscript);
     const html = await marked(embedMediaContent);
 
     return {
       slug,
       content: html,
-      hasTranscript: !!transcriptHtml,
+      hasTranscript,
       transcript: transcriptHtml,
       tableOfContents,
       ...validatedAttrs,
