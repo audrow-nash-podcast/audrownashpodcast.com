@@ -30,16 +30,16 @@ export default function TranscriptPage(
       </div>
       <article class="prose prose-lg lg:prose-xl mx-auto">
         <h1>Transcript: {post.title}</h1>
-        {post.hasTranscript ? (
-          <>
-            <h2>Table of Contents</h2>
-            <ul dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
-            <h2>Interview</h2>
-            <div dangerouslySetInnerHTML={{ __html: post.transcript }} />
-          </>
-        ) : (
-          <p>No transcript available for this episode.</p>
-        )}
+        {post.hasTranscript
+          ? (
+            <>
+              <h2>Table of Contents</h2>
+              <ul dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+              <h2>Interview</h2>
+              <div dangerouslySetInnerHTML={{ __html: post.transcript }} />
+            </>
+          )
+          : <p>No transcript available for this episode.</p>}
       </article>
     </PageLayout>
   );
