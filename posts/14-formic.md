@@ -1,5 +1,5 @@
 ---
-title: Can Robots Save American Manufacturing?
+title: "Boosting Factory Utilization: The Key to Reviving US Manufacturing?"
 published_at: 2024-10-31T12:00:00.000Z
 snippet: Explore how Formic is revolutionizing US manufacturing by making robots accessible to small and medium-sized manufacturers. Saman Farid shares insights on improving factory utilization and solving the labor shortage crisis.
 cover:
