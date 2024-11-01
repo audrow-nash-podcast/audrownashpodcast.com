@@ -9,7 +9,7 @@ links:
   - url: https://www.linkedin.com/in/samanfarid/
     text: Saman's LinkedIn
   - url: https://formic.co/
-    text: Formic Website
+    text: Formic's Website
 ---
 
 https://youtu.be/_jge9ihYnqg
