@@ -38,12 +38,11 @@ environments to building lunar colonies with NASA.
 
 > "We basically wanna get robot arms into every part of our life. Small
 > businesses, restaurants, your home. We want it to be outdoors and farm fields.
-> We want it to be in hospitals, in space, building our next lunar colony."
-> - Dave Coleman
+> We want it to be in hospitals, in space, building our next lunar colony." -
+> Dave Coleman
 
 > "Let's stop wasting all of this investor money on building the same thing over
-> and over again."
-> - Dave Coleman
+> and over again." - Dave Coleman
 
 ## 1 Opportunity
 
