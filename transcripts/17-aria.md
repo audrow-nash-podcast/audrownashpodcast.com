@@ -1,5 +1,3 @@
-## [00:00:00] Start
-
 ## [00:00:00] Introduction to Jenny Read and ARIA
 
 [00:00:00] **Audrow Nash:** Hi everyone. Audrow here. In this episode, I speak
