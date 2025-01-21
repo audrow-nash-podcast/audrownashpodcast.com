@@ -13,11 +13,11 @@ export function PostCard({ post }: PostCardProps) {
         href={`/posts/${post.slug}`}
         class="block hover:bg-gray-50 transition duration-150 ease-in-out"
       >
-        <div class="flex flex-col md:flex-row">
+        <div class="flex flex-col md:flex-row justify-center items-center">
           <img
-            src={post.cover.square}
+            src={post.cover.rect}
             alt={`Cover image for ${post.title}`}
-            class="w-full md:max-w-60 h-full object-cover"
+            class="w-full md:max-w-xs h-full object-cover"
             loading="lazy"
           />
           <div class="p-6 md:p-8">
