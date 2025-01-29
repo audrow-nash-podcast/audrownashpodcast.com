@@ -8,18 +8,12 @@ export function PostCard({ post }: PostCardProps) {
   const isNotPublished = !post.published_at || post.published_at > new Date();
 
   return (
-    <li class="bg-white shadow-md rounded-lg overflow-hidden">
+    <li class="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 max-w-2xl mx-auto">
       <a
         href={`/posts/${post.slug}`}
-        class="block hover:bg-gray-50 transition duration-150 ease-in-out"
+        class="block h-full"
       >
         <div class="flex flex-col md:flex-row justify-center items-center">
-          <img
-            src={post.cover.rect}
-            alt={`Cover image for ${post.title}`}
-            class="w-full md:max-w-xs h-full object-cover"
-            loading="lazy"
-          />
           <div class="p-6 md:p-8">
             <h3 class="text-2xl font-bold mb-3">{post.title}</h3>
             <p class="text-gray-600 mb-4 line-clamp-2">{post.snippet}</p>
