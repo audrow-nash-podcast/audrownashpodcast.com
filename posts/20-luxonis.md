@@ -20,8 +20,14 @@ links:
 
 https://youtu.be/HCysyI_prV0
 
-Ever wondered how robots actually "see" the world? Or why Tesla can achieve so much with just vision?
+Ever wondered how robots actually "see" the world? Or why Tesla can achieve so
+much with just vision?
 
-I talk with Bradley Dillon, CEO of Luxonis, about how their AI-enabled cameras are becoming the eyes and brains of robots everywhere. Bradley shares how they've sold over 150,000 vision platforms and why processing at the edge (right on the camera) is revolutionizing robotics.
+I talk with Bradley Dillon, CEO of Luxonis, about how their AI-enabled cameras
+are becoming the eyes and brains of robots everywhere. Bradley shares how
+they've sold over 150,000 vision platforms and why processing at the edge (right
+on the camera) is revolutionizing robotics.
 
-You'll like this interview if you're interested in computer vision, edge computing, or how vision technology is making automation possible in industries from agriculture to security screening.
+You'll like this interview if you're interested in computer vision, edge
+computing, or how vision technology is making automation possible in industries
+from agriculture to security screening.
