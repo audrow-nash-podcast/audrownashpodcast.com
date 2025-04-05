@@ -21,6 +21,7 @@ export type PageName =
   | "listen"
   | "posts"
   | "where-to-find"
+  | "jobs"
   | undefined;
 
 export type Announcement = {

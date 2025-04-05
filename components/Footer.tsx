@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer class="bg-gray-100 py-16">
       <div class="max-w-4xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center text-center md:text-left">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center text-center md:text-left">
           <div>
             <h3 class="text-lg font-semibold mb-4">About</h3>
             <ul class="space-y-2">
@@ -45,6 +45,27 @@ export function Footer() {
                   class="text-gray-600 hover:text-gray-800"
                 >
                   All Episodes
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Jobs</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="https://jobs.audrownashpodcast.com"
+                  class="text-gray-600 hover:text-gray-800"
+                >
+                  Browse Jobs
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://jobs.audrownashpodcast.com/jobs/new"
+                  class="text-gray-600 hover:text-gray-800"
+                >
+                  Post a Job
                 </a>
               </li>
             </ul>

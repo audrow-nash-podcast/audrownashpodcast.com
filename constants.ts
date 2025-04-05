@@ -47,6 +47,7 @@ export const MENU_ITEMS: MenuItem[] = [
   { href: "/", label: "Home", page: "home" },
   { href: "/where-to-find", label: "Where to Find", page: "where-to-find" },
   { href: "/posts", label: "Posts", page: "posts" },
+  { href: "https://jobs.audrownashpodcast.com", label: "Jobs", page: "jobs" },
   { href: "/about", label: "About", page: "about" },
   { href: "/contact", label: "Contact", page: "contact" },
 ];
