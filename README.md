@@ -18,8 +18,7 @@ and subscribe to the podcast.
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Marked](https://marked.js.org/) - A markdown parser and compiler
 - [Buttondown](https://buttondown.email/) - Email newsletter service
-- [Puppeteer](https://pptr.dev/) - A Node.js library for controlling headless
-  Chrome or Chromium
+- [Astral](https://astral.sh/) - A modern browser automation library for Deno
 
 ## Getting Started
 
@@ -109,6 +108,9 @@ Deno Deploy.
 - Newsletter subscription using Buttondown
 - Social media integration
 - SEO optimization
+- Global announcements
+- Jobs board integration
+- Transcript support for episodes
 
 ## Scripts
 
@@ -131,24 +133,17 @@ newsletter. The script uses the following:
 
 ## Testing
 
-This website uses Puppeteer for integration tests. To run the tests, you must
-first start the server with:
-
-```
-deno task start
-```
-
-Once the server is running, you can run the integration tests with:
-
-```
-deno task test:integration
-```
-
-Or simply:
+This website uses Astral for integration tests. To run the tests:
 
 ```
 deno task test
 ```
+
+This will run all integration tests, including:
+- Page rendering tests
+- Link validation
+- Post metadata validation
+- Resource availability checks
 
 ## Contributing
 
