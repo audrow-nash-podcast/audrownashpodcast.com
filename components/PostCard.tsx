@@ -8,7 +8,7 @@ export function PostCard({ post }: PostCardProps) {
   const isNotPublished = !post.published_at || post.published_at > new Date();
 
   return (
-    <li class="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 max-w-2xl mx-auto">
+    <li class="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 max-w-3xl mx-auto">
       <a
         href={`/posts/${post.slug}`}
         class="block h-full"

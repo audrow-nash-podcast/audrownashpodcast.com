@@ -80,7 +80,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
         </section>
 
         <div class="bg-slate-100">
-          <main class="max-w-4xl mx-auto px-4">
+          <main class="max-w-3xl mx-auto px-4">
             <section class="px-4 pt-16">
               <h3 class="text-3xl font-bold mb-6">Recent posts</h3>
               <ul class="space-y-8">
