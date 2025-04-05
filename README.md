@@ -140,6 +140,7 @@ deno task test
 ```
 
 This will run all integration tests, including:
+
 - Page rendering tests
 - Link validation
 - Post metadata validation

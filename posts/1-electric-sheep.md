@@ -3,7 +3,7 @@ title: "Rethinking Robotics: Electric Sheep's Journey to Safer, Smarter Machines
 published_at: 2023-11-13T12:00:00.000Z
 snippet: Discover how Electric Sheep is revolutionizing the robotics industry with AI-powered lawn mowing and a unique business model. Nag Murty and Michael Laskey share insights on their approach to creating safer, smarter machines for the physical world.
 cover:
-  rect: /posts/001-electric-sheep.png
+  rect: /posts/001-electric-sheep-rect.png
   square: /posts/001-electric-sheep-square.png
 links:
 - url: https://sheeprobotics.ai/

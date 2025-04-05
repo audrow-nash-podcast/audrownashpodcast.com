@@ -3,7 +3,7 @@ title: "Can You Ship a Factory? A Bold Vision to Make Homes More Affordable"
 published_at: 2024-06-04T12:00:00.000Z
 snippet: Discover how Cuby Technologies is revolutionizing the construction industry with mobile micro factories. Oleg Kandrashou and Aleks Gampel share their innovative approach to making home building more efficient, affordable, and scalable.
 cover:
-  rect: /posts/008-cuby.png
+  rect: /posts/008-cuby-rect.png
   square: /posts/008-cuby-square.png
 links:
 - url: https://www.cubytechnologies.com/
