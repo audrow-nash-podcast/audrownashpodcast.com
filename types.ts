@@ -21,4 +21,16 @@ export type PageName =
   | "listen"
   | "posts"
   | "where-to-find"
+  | "jobs"
   | undefined;
+
+export type Announcement = {
+  message: string;
+  link?: {
+    text: string;
+    url: string;
+  };
+  isVisible: boolean;
+  id: string;
+  dismissDuration?: number;
+};
