@@ -35,6 +35,7 @@ export function SubscribePopup(
     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 text-gray-800">
       <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative -mt-[16.67vh]">
         <button
+          type="button"
           onClick={onClose}
           class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition duration-300"
           aria-label="Close"

@@ -2,7 +2,7 @@ import { PageLayout } from "../components/PageLayout.tsx";
 
 export default function About() {
   return (
-    <PageLayout title="About" currentPage="about" includeSubscribeCta={true}>
+    <PageLayout title="About" currentPage="about" includeSubscribeCta>
       <h2 class="text-4xl font-bold mb-8">About the Audrow Nash Podcast</h2>
 
       <div class="space-y-6">

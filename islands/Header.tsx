@@ -47,6 +47,7 @@ function HeaderComponent({ currentPage, isTransparent = false }: HeaderProps) {
             </ul>
           </div>
           <button
+            type="button"
             class="lg:hidden"
             onClick={() => isMenuOpen.value = !isMenuOpen.value}
             aria-label="Toggle menu"
@@ -85,6 +86,7 @@ function HeaderComponent({ currentPage, isTransparent = false }: HeaderProps) {
                 <a href="/" class="hover:underline">Audrow Nash Podcast</a>
               </h1>
               <button
+                type="button"
                 onClick={() => isMenuOpen.value = false}
                 aria-label="Close menu"
               >
@@ -127,6 +129,7 @@ function HeaderComponent({ currentPage, isTransparent = false }: HeaderProps) {
             } text-center lg:hidden mt-8`}
           >
             <button
+              type="button"
               onClick={() => isSubscribePopupOpen.value = true}
               class="bg-secondary hover:bg-primary text-white font-bold text-xl py-4 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
             >
@@ -141,6 +144,7 @@ function HeaderComponent({ currentPage, isTransparent = false }: HeaderProps) {
 
         <div class="hidden lg:block">
           <button
+            type="button"
             onClick={() => isSubscribePopupOpen.value = true}
             class="bg-secondary text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-primary relative overflow-hidden group"
           >

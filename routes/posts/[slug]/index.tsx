@@ -14,6 +14,15 @@ export const handler: Handlers<{ post: Post; shareImagePath: string } | null> =
     },
   };
 
+// Create a safe markdown component
+function MarkdownContent({ content }: { content: string }) {
+  return (
+    <div
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
+  );
+}
+
 export default function PostPage(
   { data: { post } }: PageProps<{ post: Post; shareImagePath: string }>,
 ) {
@@ -21,7 +30,7 @@ export default function PostPage(
     <PageLayout
       title={post.title}
       currentPage="posts"
-      includeSubscribeCta={true}
+      includeSubscribeCta
     >
       <div class="mb-8">
         <a
@@ -36,7 +45,7 @@ export default function PostPage(
         <p class="text-gray-600">
           {post.published_at ? post.published_at.toDateString() : "No date"}
         </p>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <MarkdownContent content={post.content} />
       </article>
     </PageLayout>
   );

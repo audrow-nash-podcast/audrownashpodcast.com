@@ -27,7 +27,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
         {GLOBAL_ANNOUNCEMENT && <AnnouncementBanner {...GLOBAL_ANNOUNCEMENT} />}
         <div class="relative">
           <div class="absolute top-0 left-0 right-0 z-10">
-            <Header currentPage="home" isTransparent={true} />
+            <Header currentPage="home" isTransparent />
           </div>
           <section class="w-full h-[600px] bg-[url('/banner.png')] bg-cover bg-center relative">
             <img
