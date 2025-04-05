@@ -15,9 +15,6 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: 2.x
-          links: |
-            x.com/*:skip
-            twitter.com/*:skip
 
       - name: Check formatting
         run: deno fmt --check
