@@ -89,7 +89,7 @@ async function testPageRendering(
   expectedTitle: string,
   expectedH2Text: string,
 ) {
-  const browser = await launch();
+  const browser = await launch({ args: ["--no-sandbox"] });
   const browserPage = await browser.newPage();
   await browserPage.goto(`${BASE_URL}${page}`);
 
@@ -218,7 +218,7 @@ Deno.test({
 Deno.test({
   name: "All links and images are valid across all pages",
   fn: async () => {
-    const browser = await launch();
+    const browser = await launch({ args: ["--no-sandbox"] });
     const page = await browser.newPage();
     const checkedResources = new Map<string, boolean>();
 
