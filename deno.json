@@ -10,7 +10,6 @@
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "test": "deno task test:integration",
-    "install-puppeteer": "deno run -A https://deno.land/x/puppeteer/install.ts",
     "test:integration": "deno test --allow-net --allow-read --allow-env --allow-write --allow-run tests/integration_test.ts",
     "wait-for-server": "deno run --allow-net scripts/wait-for-server.ts",
     "upload-newsletter": "deno run --allow-read --allow-net --allow-env scripts/upload-newsletter.ts"
@@ -35,12 +34,16 @@
     "marked": "npm:marked@^13.0.2",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
-    "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts",
+    "astral": "jsr:@astral/astral@0.5.2",
     "tailwindcss": "npm:tailwindcss@3.4.1",
     "tailwindcss/": "npm:/tailwindcss@3.4.1/",
     "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
     "zod": "npm:zod@^3.23.8"
   },
-  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "lib": ["dom", "dom.iterable", "esnext", "deno.ns"]
+  },
   "nodeModulesDir": "auto"
 }

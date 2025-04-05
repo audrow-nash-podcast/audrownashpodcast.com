@@ -1,5 +1,5 @@
 import { assert, assertEquals, assertNotEquals } from "@std/assert";
-import puppeteer, { Page } from "puppeteer";
+import { launch, type Page } from "astral";
 import { getPosts } from "../utils/posts.ts";
 import { ADDITIONAL_PAGES, MENU_ITEMS, SOCIAL_LINKS } from "../constants.ts";
 import { BASE_URL, isServerReady } from "../scripts/wait-for-server.ts";
@@ -19,14 +19,13 @@ async function checkLinksAndImagesOnPage(
   pageName: string,
   checkedLinks: Map<string, boolean>,
 ) {
-  const links = await page.$$eval(
-    "a",
-    (elements) => elements.map((el) => el.href),
-  );
-  const images = await page.$$eval(
-    "img",
-    (elements) => elements.map((el) => el.src),
-  );
+  const links = await page.evaluate(() => {
+    return Array.from(document.querySelectorAll("a")).map((el) => el.href);
+  });
+
+  const images = await page.evaluate(() => {
+    return Array.from(document.querySelectorAll("img")).map((el) => el.src);
+  });
 
   const resources = [...links, ...images].filter((resource) => {
     // Skip empty resources
@@ -90,14 +89,17 @@ async function testPageRendering(
   expectedTitle: string,
   expectedH2Text: string,
 ) {
-  const browser = await puppeteer.launch();
+  const browser = await launch();
   const browserPage = await browser.newPage();
   await browserPage.goto(`${BASE_URL}${page}`);
 
-  const title = await browserPage.title();
+  const title = await browserPage.evaluate(() => document.title);
   assertEquals(title, expectedTitle);
 
-  const h2Text = await browserPage.$eval("h2", (el) => el.textContent);
+  const h2Text = await browserPage.evaluate(() => {
+    const h2 = document.querySelector("h2");
+    return h2 ? h2.textContent : null;
+  });
   assertEquals(h2Text, expectedH2Text);
 
   await browser.close();
@@ -216,7 +218,7 @@ Deno.test({
 Deno.test({
   name: "All links and images are valid across all pages",
   fn: async () => {
-    const browser = await puppeteer.launch();
+    const browser = await launch();
     const page = await browser.newPage();
     const checkedResources = new Map<string, boolean>();
 
