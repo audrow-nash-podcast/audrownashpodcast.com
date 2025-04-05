@@ -80,15 +80,15 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
         </section>
 
         <div class="bg-slate-100">
-          <main class="max-w-3xl mx-auto px-4">
-            <section class="px-4 pt-16">
-              <h3 class="text-3xl font-bold mb-6">Recent posts</h3>
+          <main class="max-w-3xl mx-auto">
+            <section class="pt-16">
+              <h3 class="text-3xl font-bold mb-8">Recent posts</h3>
               <ul class="space-y-8">
                 {recentPosts.map((post) => (
                   <PostCard key={post.slug} post={post} />
                 ))}
               </ul>
-              <div class="mt-8 text-center">
+              <div class="mt-12 text-center">
                 <a
                   href="/posts"
                   class="inline-block bg-secondary hover:bg-primary text-white font-bold py-2 px-4 rounded transition duration-300"
@@ -98,7 +98,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
               </div>
             </section>
 
-            <section class="px-4 pt-16">
+            <section class="pt-16 pb-16">
               <SubscribeCta />
             </section>
           </main>
