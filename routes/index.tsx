@@ -4,8 +4,9 @@ import { Header } from "../islands/Header.tsx";
 import { Footer } from "../components/Footer.tsx";
 import { getPosts, Post } from "../utils/posts.ts";
 import { PostCard } from "../components/PostCard.tsx";
-import { SOCIAL_LINKS } from "../constants.ts";
+import { GLOBAL_ANNOUNCEMENT, SOCIAL_LINKS } from "../constants.ts";
 import { SubscribeCta } from "../islands/SubscribeCta.tsx";
+import { AnnouncementBanner } from "../islands/AnnouncementBanner.tsx";
 
 export const handler: Handlers<Post[]> = {
   async GET(_, ctx) {
@@ -23,6 +24,7 @@ export default function Home({ data: recentPosts }: PageProps<Post[]>) {
       </Head>
 
       <div class="min-h-screen bg-white text-gray-800 font-sans">
+        {GLOBAL_ANNOUNCEMENT && <AnnouncementBanner {...GLOBAL_ANNOUNCEMENT} />}
         <div class="relative">
           <div class="absolute top-0 left-0 right-0 z-10">
             <Header currentPage="home" isTransparent={true} />

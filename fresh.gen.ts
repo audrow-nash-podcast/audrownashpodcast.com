@@ -12,6 +12,7 @@ import * as $posts_slug_transcript from "./routes/posts/[slug]/transcript.tsx";
 import * as $posts_index from "./routes/posts/index.tsx";
 import * as $subscription_confirmation from "./routes/subscription-confirmation.tsx";
 import * as $where_to_find from "./routes/where-to-find.tsx";
+import * as $AnnouncementBanner from "./islands/AnnouncementBanner.tsx";
 import * as $FoldingSection from "./islands/FoldingSection.tsx";
 import * as $Header from "./islands/Header.tsx";
 import * as $SubscribeCta from "./islands/SubscribeCta.tsx";
@@ -32,6 +33,7 @@ const manifest = {
     "./routes/where-to-find.tsx": $where_to_find,
   },
   islands: {
+    "./islands/AnnouncementBanner.tsx": $AnnouncementBanner,
     "./islands/FoldingSection.tsx": $FoldingSection,
     "./islands/Header.tsx": $Header,
     "./islands/SubscribeCta.tsx": $SubscribeCta,

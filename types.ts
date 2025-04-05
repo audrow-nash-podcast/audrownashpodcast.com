@@ -22,3 +22,14 @@ export type PageName =
   | "posts"
   | "where-to-find"
   | undefined;
+
+export type Announcement = {
+  message: string;
+  link?: {
+    text: string;
+    url: string;
+  };
+  isVisible: boolean;
+  id: string;
+  dismissDuration?: number;
+};
