@@ -22,6 +22,7 @@ export type PageName =
   | "posts"
   | "where-to-find"
   | "jobs"
+  | "404"
   | undefined;
 
 export type Announcement = {

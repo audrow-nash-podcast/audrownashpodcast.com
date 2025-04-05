@@ -14,6 +14,7 @@ export default function FoldingSection(
     <section class="border border-gray-200 rounded-lg mb-4">
       <button
         class="w-full text-left p-4 flex justify-between items-center"
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
       >
         <h3 class="text-2xl font-bold">{title}</h3>

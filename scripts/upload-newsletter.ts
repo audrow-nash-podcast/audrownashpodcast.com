@@ -106,7 +106,11 @@ async function readAndProcessMarkdownFile(
 
     return { frontmatter, htmlContent: processedBody, slug };
   } catch (error) {
-    console.error(`Error reading or processing file: ${error.message}`);
+    if (error instanceof Error) {
+      console.error(`Error reading or processing file: ${error.message}`);
+    } else {
+      console.error("An unknown error occurred:", error);
+    }
     throw error;
   }
 }

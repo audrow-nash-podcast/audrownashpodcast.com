@@ -63,6 +63,7 @@ export function AnnouncementBanner({
           )}
         </p>
         <button
+          type="button"
           onClick={handleDismiss}
           class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors"
           aria-label="Dismiss announcement"

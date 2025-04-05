@@ -9,21 +9,18 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Deno
-        uses: denoland/setup-deno@main
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: 1.x
+          deno-version: v2.x
 
       - name: Check formatting
         run: deno fmt --check
 
       - name: Lint
         run: deno lint
-
-      - name: Install Puppeteer
-        run: deno task install-puppeteer
 
       - name: Start Fresh server and wait for it to be ready
         run: |
