@@ -1,6 +1,6 @@
 ---
 title: "From Napkin Sketches to Precision Frames: How Robots Are Transforming Home Building"
-published_at: 2025-04-08T12:00:00.000Z
+published_at: 2025-04-08T09:00:00.000Z
 snippet: "BotBuilt co-founder Barrett Ames explains how robots can revolutionize home construction by automating framing, making building faster, safer and more affordable."
 cover:
   rect: /posts/021-botbuilt-rect.png
